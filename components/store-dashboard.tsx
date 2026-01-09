@@ -64,9 +64,13 @@ export function StoreDashboard({
         <div className="min-h-screen pb-24 space-y-8">
             {/* Mobile Header with Search */}
             <div className="md:hidden sticky top-0 z-40 bg-background/10 backdrop-blur-md px-5 py-3 flex items-center gap-4 border-b">
-                <button className="relative w-10 h-10 flex items-center justify-center rounded-full bg-slate-100 hover:bg-slate-200 transition-colors">
-                    <ShoppingBag className="w-5 h-5 text-foreground" />
-                    <span className="absolute top-2 right-2 w-2 h-2 bg-blue-500 rounded-full ring-2 ring-white"></span>
+                <button className="relative w-10 h-10 flex items-center justify-center rounded-full bg-slate-100 hover:bg-slate-200 transition-colors md:hidden">
+                    {/* Placeholder for user/menu */}
+                    <Link href={'/'}>
+                        <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-blue-500 to-indigo-600 flex items-center justify-center text-white font-bold text-xs">
+                            SW
+                        </div>
+                    </Link>
                 </button>
                 <div className="flex-1 relative">
                     <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
@@ -89,12 +93,13 @@ export function StoreDashboard({
                         <Camera className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                     )}
                 </div>
-                <button className="relative w-10 h-10 flex items-center justify-center rounded-full bg-slate-100 hover:bg-slate-200 transition-colors md:hidden">
-                    {/* Placeholder for user/menu */}
-                    <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-blue-500 to-indigo-600 flex items-center justify-center text-white font-bold text-xs">
-                        JD
-                    </div>
+                <button className="relative w-10 h-10 flex items-center justify-center rounded-full bg-slate-100 hover:bg-slate-200 transition-colors">
+                    <Link href={'/cart'}>
+                        <ShoppingBag className="w-5 h-5 text-foreground" />
+                        <span className="absolute top-2 right-2 w-2 h-2 bg-blue-500 rounded-full ring-2 ring-white"></span>
+                    </Link>
                 </button>
+
             </div>
 
             <div className="px-5 md:container md:mx-auto md:px-4 space-y-8 pt-2 md:pt-8 min-h-[50vh]">
