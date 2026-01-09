@@ -12,8 +12,8 @@ const defaultUrl = process.env.VERCEL_URL
 
 export const metadata: Metadata = {
   metadataBase: new URL(defaultUrl),
-  title: "Phone Broker Platform",
-  description: "Premium smartphones at broker prices.",
+  title: "SmartWaveUk",
+  description: "Premium gadgets at affordable prices.",
 };
 
 const outfit = Outfit({
