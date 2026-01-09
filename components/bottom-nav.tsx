@@ -14,7 +14,7 @@ export function BottomNav() {
 
     const navItems = [
         { icon: Home, label: "Home", href: "/" },
-        { icon: MessageCircle, label: "Chat", href: "#", disabled: true }, // Placeholder
+        { icon: MessageCircle, label: "Chat", href: "https://wa.link/mlzire", disabled: true }, // Placeholder
         { icon: ShoppingCart, label: "Cart", href: "/cart", disabled: true }, // Placeholder
         { icon: User, label: "Profile", href: "/account", admin: true }, // Quick link to admin for now
     ];

@@ -3,6 +3,7 @@
 import { Smartphone, Monitor, Headphones, Tablet, Speaker, Grid } from "lucide-react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 const categories = [
     { label: "Mobile", icon: Smartphone, image: "/phone-cat.png" },
@@ -21,23 +22,25 @@ export function Categories() {
                     key={cat.label}
                     className="flex flex-col items-center gap-2 group bg-slate-50 rounded-md p-2 transition-all group-hover:bg-white group-hover:border-primary/20 group-hover:shadow-lg group-hover:scale-105"
                 >
-                    <div className="w-16 h-16 flex items-center justify-center text-slate-600  overflow-hidden relative">
-                        {cat.image ? (
-                            <div className="w-24 h-24 relative">
-                                <Image
-                                    src={cat.image}
-                                    alt={cat.label}
-                                    fill
-                                    className="object-contain"
-                                />
-                            </div>
-                        ) : (
-                            <cat.icon className="w-6 h-6 group-hover:text-primary transition-colors" />
-                        )}
-                    </div>
-                    <span className="text-sm font-semibold text-slate-600 group-hover:text-foreground transition-colors">
-                        {cat.label}
-                    </span>
+                    <Link href={`/shop`}>
+                        <div className="w-16 h-16 flex items-center justify-center text-slate-600  overflow-hidden relative">
+                            {cat.image ? (
+                                <div className="w-24 h-24 relative">
+                                    <Image
+                                        src={cat.image}
+                                        alt={cat.label}
+                                        fill
+                                        className="object-contain"
+                                    />
+                                </div>
+                            ) : (
+                                <cat.icon className="w-6 h-6 group-hover:text-primary transition-colors" />
+                            )}
+                        </div>
+                        <span className="text-sm font-semibold text-slate-600 group-hover:text-foreground transition-colors">
+                            {cat.label}
+                        </span>
+                    </Link>
                 </button>
             ))}
         </div>
