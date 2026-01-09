@@ -1,28 +1,22 @@
-export type Phone = {
+export type Item = {
     id: string;
     created_at: string;
+    category: string; // Added
     brand: string;
     model: string;
     variant: string;
     condition: string;
     price: number;
     currency: string;
-    availability_status: 'in_stock' | 'limited' | 'request' | 'sold';
+    availability_status: string;
     seller_region?: string;
     internal_notes?: string;
     image_url?: string;
-    description?: string;
     images?: string[];
     colors?: string[];
-    specs?: Record<string, any>;
+    description?: string;
+    specs?: any; // Added JSONB field
 };
 
-export type Inquiry = {
-    id: string;
-    created_at: string;
-    customer_name: string;
-    customer_contact: string;
-    phone_id?: string;
-    status: 'pending' | 'confirmed' | 'paid' | 'shipped' | 'cancelled';
-    admin_notes?: string;
-};
+// Deprecated alias for backward compatibility during refactor
+export type Phone = Item;

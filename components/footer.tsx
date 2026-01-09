@@ -11,23 +11,17 @@ export function Footer() {
 
                     {/* Brand Column */}
                     <div className="space-y-4">
-                        <Link href="/" className="text-2xl font-bold text-black">
-                            PhoneStore
+                        <Link href="/" className="text-transparent bg-clip-text font-bold text-2xl tracking-tight" style={{
+                            backgroundImage: "linear-gradient(to right, #3b82f6, #8b5cf6, #ec4899)",
+                            WebkitBackgroundClip: "text",
+                            backgroundClip: "text",
+                            color: "transparent",
+                        }}>
+                            Smart<span className="">waveUK</span>
                         </Link>
                         <p className="text-slate-800 text-sm leading-relaxed">
-                            Your trusted destination for premium smartphones. We offer the best prices on new, used, and refurbished devices with guaranteed quality.
+                            Your trusted destination for premium gadgets. We offer the best prices on new, used, and refurbished devices with guaranteed quality.
                         </p>
-                        <div className="flex gap-4 pt-2">
-                            <Link href="#" className="text-blue-800 hover:text-blue-400 transition-colors">
-                                <Facebook className="w-5 h-5" />
-                            </Link>
-                            <Link href="#" className="text-pink-800 hover:text-pink-400 transition-colors">
-                                <Instagram className="w-5 h-5" />
-                            </Link>
-                            <Link href="#" className="text-blue-800 hover:text-blue-400 transition-colors">
-                                <Twitter className="w-5 h-5" />
-                            </Link>
-                        </div>
                     </div>
 
                     {/* Quick Links */}
@@ -37,8 +31,6 @@ export function Footer() {
                             <li><Link href="/shop" className="text-blue-800 hover:text-blue-400 transition-colors">Shop All</Link></li>
                             <li><Link href="/shop?condition=New" className="text-blue-800 hover:text-blue-400 transition-colors">New Arrivals</Link></li>
                             <li><Link href="/shop?condition=Refurbished" className="text-blue-800 hover:text-blue-400 transition-colors">Refurbished Deals</Link></li>
-                            <li><Link href="/sell" className="text-blue-800 hover:text-blue-400 transition-colors">Sell Your Device</Link></li>
-                            <li><Link href="/track-order" className="text-blue-800 hover:text-blue-400 transition-colors">Track Order</Link></li>
                         </ul>
                     </div>
 
@@ -52,11 +44,11 @@ export function Footer() {
                             </li>
                             <li className="flex items-center gap-3">
                                 {/* <Phone className="w-5 h-5 text-blue-500 shrink-0" /> */}
-                                <span>+1 (555) 123-4567</span>
+                                <span>+44 726 408 767</span>
                             </li>
                             <li className="flex items-center gap-3">
                                 {/* <Mail className="w-5 h-5 text-blue-500 shrink-0" /> */}
-                                <span>support@phonestore.com</span>
+                                <span>support@smartwaveuk.com</span>
                             </li>
                         </ul>
                     </div>
@@ -69,9 +61,9 @@ export function Footer() {
                             <Input
                                 type="email"
                                 placeholder="Enter your email"
-                                className="bg-slate-800 border-slate-700 text-slate-200 placeholder:text-slate-500 focus-visible:ring-blue-500"
+                                className="bg-slate-800 border-slate-700 text-slate-200 placeholder:text-slate-500 focus-visible:ring-blue-500 rounded-full"
                             />
-                            <Button size="icon" className="bg-blue-600 hover:bg-blue-700 rounded-full">
+                            <Button size="default" className="w-9 h-9 bg-blue-600 hover:bg-blue-700 rounded-full">
                                 <Mail className="w-4 h-4" />
                             </Button>
                         </div>
@@ -79,7 +71,7 @@ export function Footer() {
                 </div>
 
                 <div className="mt-16 pt-8 border-t border-slate-400 flex flex-row md:flex-row justify-between items-center gap-4 text-sm text-slate-500">
-                    <p>© 2024 PhoneStore. All rights reserved.</p>
+                    <p>© {new Date().getFullYear()} SmartwaveUK. All rights reserved.</p>
                     <div className="flex gap-6">
                         <Link href="/privacy" className="hover:text-slate-300 transition-colors">Privacy Policy</Link>
                         <Link href="/terms" className="hover:text-slate-300 transition-colors">Terms of Service</Link>

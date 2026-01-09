@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
 import { ThemeProvider } from "next-themes";
-import { BottomNav } from "@/components/bottom-nav";
-import { Navbar } from "@/components/navbar";
-import { Footer } from "@/components/footer";
-import { Suspense } from "react";
+import { CartProvider } from "@/components/providers/cart-provider";
+import { PublicLayout } from "@/components/public-layout";
 import "./globals.css";
+import { Suspense } from "react";
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
@@ -37,14 +36,11 @@ export default function RootLayout({
           forcedTheme="light"
           disableTransitionOnChange
         >
-          <Suspense fallback={<div className="h-16 w-full bg-background/80 border-b" />}>
-            <Navbar />
-          </Suspense>
-          {children}
-          <Suspense fallback={null}>
-            <BottomNav />
-          </Suspense>
-          <Footer />
+          <CartProvider>
+            <PublicLayout>
+              {children}
+            </PublicLayout>
+          </CartProvider>
         </ThemeProvider>
       </body>
     </html>

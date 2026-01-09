@@ -61,7 +61,7 @@ export function StoreDashboard({
     );
 
     return (
-        <div className="min-h-screen bg-slate-50 pb-24 space-y-8">
+        <div className="min-h-screen pb-24 space-y-8">
             {/* Mobile Header with Search */}
             <div className="md:hidden sticky top-0 z-40 bg-background/10 backdrop-blur-md px-5 py-3 flex items-center gap-4 border-b">
                 <button className="relative w-10 h-10 flex items-center justify-center rounded-full bg-slate-100 hover:bg-slate-200 transition-colors">
@@ -126,7 +126,7 @@ export function StoreDashboard({
                             {searchQuery ? `Results for "${searchQuery}"` : "Flash Deals for You"}
                         </h3>
                         {!searchQuery && (
-                            <Link href="#" className="bg-white px-2 py-1 rounded-full border border-blue-600 text-xs font-semibold text-blue-600 hover:text-white hover:bg-blue-600 hover:border-blue-600 shrink-0" style={{ border: '0.5px solid blue' }}>See All</Link>
+                            <Link href="/shop" className="bg-white px-2 py-1 rounded-full border border-blue-600 text-xs font-semibold text-blue-600 hover:text-white hover:bg-blue-600 hover:border-blue-600 shrink-0" style={{ border: '0.5px solid blue' }}>See All</Link>
                         )}
                     </div>
 
@@ -157,7 +157,7 @@ export function StoreDashboard({
                             >
                                 <h3 className="font-bold text-lg shrink-0" style={{ background: 'linear-gradient(to left, #90adecff, #f79a69ff)', color: 'white', padding: '5px 10px', borderRadius: '30px' }}>New items for You</h3>
                                 <div className="h-px bg-white/50 flex-1 mx-2" />
-                                <Link href="#" className="bg-white px-2 py-1 rounded-full border border-blue-600 text-xs font-semibold text-blue-600 hover:text-white hover:bg-blue-600 hover:border-blue-600 shrink-0" style={{ border: '0.5px solid blue' }}>See All</Link>
+                                <Link href="/shop" className="bg-white px-2 py-1 rounded-full border border-blue-600 text-xs font-semibold text-blue-600 hover:text-white hover:bg-blue-600 hover:border-blue-600 shrink-0" style={{ border: '0.5px solid blue' }}>See All</Link>
                             </div>
                             <PhoneGrid phones={initialPhones.filter(p => p.condition.toLowerCase() === 'new')} currency={currency} mobileColumns={1} />
                         </section>

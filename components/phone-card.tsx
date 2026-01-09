@@ -24,7 +24,7 @@ export function PhoneCard({ phone, currency }: { phone: Phone, currency?: string
                         <img
                             src={phone.image_url}
                             alt={`${phone.brand} ${phone.model}`}
-                            className="object-cover w-full h-full transition-transform group-hover:scale-105"
+                            className="object-contain w-full h-full transition-transform group-hover:scale-105"
                         />
                     ) : (
                         <div className="w-full h-full flex items-center justify-center text-muted-foreground bg-secondary/30">

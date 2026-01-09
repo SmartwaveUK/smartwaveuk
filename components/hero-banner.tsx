@@ -80,7 +80,7 @@ export function HeroBanner() {
                         </p>
 
                         <Link
-                            href="#"
+                            href="/shop"
                             className="inline-flex items-center gap-2 px-4 py-2 bg-white text-black rounded-full text-xs sm:text-sm font-bold mt-2 shadow-sm hover:scale-105 transition-transform"
                         >
                             Shop Now

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Home, Search, ShoppingCart, User, MessageCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { HugeiconsIcon } from '@hugeicons/react';
 
 export function BottomNav() {
     const pathname = usePathname();
@@ -14,8 +15,8 @@ export function BottomNav() {
     const navItems = [
         { icon: Home, label: "Home", href: "/" },
         { icon: MessageCircle, label: "Chat", href: "#", disabled: true }, // Placeholder
-        { icon: ShoppingCart, label: "Cart", href: "#", disabled: true }, // Placeholder
-        { icon: User, label: "Profile", href: "/admin", admin: true }, // Quick link to admin for now
+        { icon: ShoppingCart, label: "Cart", href: "/cart", disabled: true }, // Placeholder
+        { icon: User, label: "Profile", href: "/account", admin: true }, // Quick link to admin for now
     ];
 
     return (

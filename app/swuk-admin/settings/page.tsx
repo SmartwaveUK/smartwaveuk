@@ -6,7 +6,7 @@ async function updateCurrency(formData: FormData) {
     const currency = formData.get("currency") as string;
     if (currency) {
         await updateSiteSetting('site_currency', currency);
-        revalidatePath('/admin/settings');
+        revalidatePath('/swuk-admin/settings');
     }
 }
 
