@@ -27,8 +27,8 @@ export default function LanguageSwitcher() {
                 onChange={onSelectChange}
                 className="h-9 pl-8 pr-3 bg-slate-900 border border-slate-700 text-slate-200 text-sm rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none cursor-pointer hover:bg-slate-800 transition-colors"
             >
-                <option value="en">English (UK)</option>
-                <option value="pl">Polski (PL)</option>
+                <option value="en">UK</option>
+                <option value="pl">PL</option>
             </select>
         </div>
     );
