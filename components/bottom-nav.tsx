@@ -14,8 +14,8 @@ export function BottomNav() {
 
     const navItems = [
         { icon: Home, label: "Home", href: "/" },
-        { icon: MessageCircle, label: "Chat", href: "https://wa.link/mlzire", disabled: true }, // Placeholder
-        { icon: ShoppingCart, label: "Cart", href: "/cart", disabled: true }, // Placeholder
+        { icon: MessageCircle, label: "Chat", href: "https://wa.link/mlzire" },
+        { icon: ShoppingCart, label: "Cart", href: "/cart" },
         { icon: User, label: "Profile", href: "/account", admin: true }, // Quick link to admin for now
     ];
 
@@ -32,8 +32,7 @@ export function BottomNav() {
                                 "flex flex-col items-center justify-center space-y-1 w-full h-full text-xs font-medium transition-colors",
                                 isActive
                                     ? "text-primary"
-                                    : "text-muted-foreground hover:text-foreground",
-                                item.disabled && "opacity-50 pointer-events-none"
+                                    : "text-muted-foreground hover:text-foreground"
                             )}
                         >
                             <item.icon className={cn("w-6 h-6", isActive && "fill-current")} />
