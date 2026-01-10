@@ -3,23 +3,26 @@
 import { Smartphone, Monitor, Headphones, Tablet, Speaker, Grid } from "lucide-react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
-import Link from "next/link";
-
-const categories = [
-    { label: "Mobile", icon: Smartphone, image: "/phone-cat.png" },
-    { label: "Headphones", icon: Headphones, image: "/headphone-cat.png" },
-    { label: "Tablets", icon: Tablet, image: "/tablet-cat.png" },
-    { label: "Laptops", icon: Monitor, image: "/laptop-cat.png" }, // Fixed pluralization for consistency
-    { label: "Speakers", icon: Speaker, image: "/speaker-cat.png" },
-    { label: "More", icon: Grid },
-];
+import { Link } from "@/i18n/routing";
+import { useTranslations } from "next-intl";
 
 export function Categories() {
+    const t = useTranslations("Categories");
+
+    const categories = [
+        { key: "mobile", icon: Smartphone, image: "/phone-cat.png" },
+        { key: "headphones", icon: Headphones, image: "/headphone-cat.png" },
+        { key: "tablets", icon: Tablet, image: "/tablet-cat.png" },
+        { key: "laptops", icon: Monitor, image: "/laptop-cat.png" },
+        { key: "speakers", icon: Speaker, image: "/speaker-cat.png" },
+        { key: "more", icon: Grid },
+    ];
+
     return (
         <div className="grid grid-cols-3 md:grid-cols-4 gap-4 sm:flex sm:flex-wrap sm:justify-start">
             {categories.map((cat, i) => (
                 <button
-                    key={cat.label}
+                    key={cat.key}
                     className="flex flex-col items-center gap-2 group bg-slate-50 rounded-md p-2 transition-all group-hover:bg-white group-hover:border-primary/20 group-hover:shadow-lg group-hover:scale-105"
                 >
                     <Link href={`/shop`}>
@@ -28,7 +31,7 @@ export function Categories() {
                                 <div className="w-24 h-24 relative">
                                     <Image
                                         src={cat.image}
-                                        alt={cat.label}
+                                        alt={t(cat.key)}
                                         fill
                                         className="object-contain"
                                     />
@@ -38,7 +41,7 @@ export function Categories() {
                             )}
                         </div>
                         <span className="text-sm font-semibold text-slate-600 group-hover:text-foreground transition-colors">
-                            {cat.label}
+                            {t(cat.key)}
                         </span>
                     </Link>
                 </button>

@@ -1,0 +1,335 @@
+{
+    "HomePage": {
+        "title": "Telefony Premium",
+        "subtitle": "Najlepsze ceny na nowe i używane gadżety"
+    },
+    "Navigation": {
+        "home": "Strona główna",
+        "shop": "Sklep",
+        "cart": "Koszyk",
+        "account": "Konto",
+        "chat": "Czat"
+    },
+    "Cart": {
+        "title": "Twój koszyk",
+        "empty": "Twój koszyk jest pusty",
+        "checkout": "Do kasy",
+        "bagEmptyTitle": "Twój koszyk jest pusty",
+        "bagEmptyDescription": "Wygląda na to, że nie dodałeś jeszcze żadnych telefonów do koszyka.",
+        "browsePhones": "Przeglądaj telefony",
+        "continueShopping": "Kontynuuj zakupy",
+        "yourRequestBag": "Twój koszyk ({count})",
+        "remove": "Usuń",
+        "totalValue": "Wartość całkowita",
+        "proceedToCheckout": "Przejdź do kasy",
+        "taxesShippingCalculated": "Podatki i wysyłka obliczane przy kasie."
+    },
+    "Checkout": {
+        "title": "Kasa",
+        "backToCart": "Wróć do koszyka",
+        "contactInfo": "Informacje kontaktowe",
+        "shippingAddress": "Adres dostawy",
+        "orderSummary": "Podsumowanie zamówienia",
+        "total": "Suma",
+        "proceedPayment": "Przejdź do płatności",
+        "secureEncryption": "Bezpieczne szyfrowanie",
+        "bagEmpty": "Twój koszyk jest pusty",
+        "goBackShopping": "Wróć do zakupów",
+        "orderSuccess": "Zamówienie złożone pomyślnie!",
+        "accountCreated": "Konto utworzone",
+        "accountCreatedDescription": "Konto zostało utworzone. Sprawdź swoją skrzynkę mailową, aby otrzymać dane do logowania i śledzić zamówienie.",
+        "paymentDetails": "Szczegóły płatności",
+        "goToOrders": "Przejdź do moich zamówień",
+        "makeTransfer": "Prosimy o dokonanie przelewu na poniższe konto brokera:",
+        "bank": "Bank:",
+        "sortCode": "Kod oddziału (Sort Code):",
+        "accountNumber": "Numer konta:",
+        "reference": "Tytuł przelewu:",
+        "orderProcessed": "* Twoje zamówienie zostanie przetworzone po zaksięgowaniu wpłaty.",
+        "fullName": "Imię i nazwisko",
+        "emailAddress": "Adres email",
+        "phoneNumber": "Numer telefonu",
+        "addressLine1": "Adres (linia 1)",
+        "city": "Miasto",
+        "postcode": "Kod pocztowy",
+        "somethingWentWrong": "Coś poszło nie tak. Spróbuj ponownie."
+    },
+    "Account": {
+        "title": "Moje Konto",
+        "profile": "Profil",
+        "signOut": "Wyloguj się",
+        "orderHistory": "Historia zamówień",
+        "noOrders": "Brak zamówień",
+        "startExploring": "Zacznij przeglądać naszą kolekcję, aby znaleźć kolejne gadżety.",
+        "browseItems": "Przeglądaj przedmioty",
+        "order": "Zamówienie",
+        "paymentRequired": "Wymagana płatność",
+        "makeTransfer": "Prosimy o wykonanie przelewu bankowego, aby sfinalizować zamówienie:",
+        "unknownDevice": "Nieznane urządzenie",
+        "valuedCustomer": "Szanowny Kliencie",
+        "status": {
+            "paid": "Opłacone",
+            "pending": "Oczekujące",
+            "shipped": "Wysłane",
+            "cancelled": "Anulowane"
+        }
+    },
+    "StoreDashboard": {
+        "searchPlaceholder": "Szukaj telefonów...",
+        "categories": "Kategorie",
+        "flashDeals": "Gorące okazje dla Ciebie",
+        "resultsFor": "Wyniki dla",
+        "seeAll": "Zobacz wszystkie",
+        "noResults": "Nie znaleziono telefonów pasujących do wyszukiwania.",
+        "clearSearch": "Wyczyść wyszukiwanie",
+        "newItems": "Nowe przedmioty dla Ciebie",
+        "shopByPrice": "Kupuj według ceny",
+        "all": "Wszystkie",
+        "budget": "Budżetowe",
+        "midRange": "Średnia półka",
+        "premium": "Premium"
+    },
+    "HeroBanner": {
+        "shopNow": "Kup teraz",
+        "slide1": {
+            "title": "iPhone 16 Pro",
+            "subtitle": "Wkuty w tytan. Napędzany przez Apple Intelligence."
+        },
+        "slide2": {
+            "title": "Czarny Tytan",
+            "subtitle": "Smukły. Wyrafinowany. Pro wydajność."
+        },
+        "slide3": {
+            "title": "Gorące okazje",
+            "subtitle": "Ekskluzywne kolory w bezkonkurencyjnych cenach brokerskich."
+        }
+    },
+    "Categories": {
+        "mobile": "Telefony",
+        "headphones": "Słuchawki",
+        "tablets": "Tablety",
+        "laptops": "Laptopy",
+        "speakers": "Głośniki",
+        "more": "Więcej"
+    },
+    "Common": {
+        "loading": "Ładowanie...",
+        "error": "Coś poszło nie tak",
+        "noItems": "W tej chwili brak przedmiotów.",
+        "checkBack": "Sprawdź ponownie później.",
+        "noImage": "Brak zdjęcia"
+    },
+    "Footer": {
+        "description": "Twoje zaufane miejsce na gadżety premium. Oferujemy najlepsze ceny na nowe, używane i odnowione urządzenia z gwarancją jakości.",
+        "quickLinks": "Szybkie linki",
+        "newArrivals": "Nowości",
+        "support": "Wsparcie",
+        "stayUpdated": "Bądź na bieżąco",
+        "subscribeText": "Zapisz się do naszego newslettera, aby otrzymywać informacje o nowościach i ekskluzywnych ofertach.",
+        "emailPlaceholder": "Wpisz swój email",
+        "rightsReserved": "Wszelkie prawa zastrzeżone.",
+        "privacy": "Polityka prywatności",
+        "terms": "Warunki usługi",
+        "shipping": "Informacje o wysyłce"
+    },
+    "ShopPage": {
+        "title": "Wszystkie produkty",
+        "resultsFound": "{count, plural, =0 {Nie znaleziono wyników} one {Znaleziono # wynik} few {Znaleziono # wyniki} many {Znaleziono # wyników} other {Znaleziono # wyników}}"
+    },
+    "Shop": {
+        "filters": "Filtry",
+        "clearAll": "Wyczyść wszystko",
+        "priceRange": "Zakres cen",
+        "min": "Min",
+        "max": "Max",
+        "applyPrice": "Zastosuj cenę",
+        "brands": "Marki",
+        "condition": "Stan",
+        "availability": "Dostępność",
+        "inStockOnly": "Tylko dostępne",
+        "showResults": "Pokaż wyniki",
+        "sortBy": "Sortuj według",
+        "sortOptions": {
+            "newest": "Najnowsze",
+            "price_asc": "Cena: od najniższej",
+            "price_desc": "Cena: od najwyższej"
+        },
+        "conditions": {
+            "new": "Nowy",
+            "refurbished": "Odnowiony",
+            "used": "Używany"
+        }
+    },
+    "ProductPage": {
+        "backToShop": "Wróć do sklepu",
+        "byBrand": "Przez {brand}",
+        "aboutProduct": "O tym produkcie",
+        "descriptionFallback": "Nowy {model} oferuje oszałamiający wyświetlacz, potężną wydajność i zaawansowany system kamer. Sprawdzony pod kątem jakości i zweryfikowany przez naszych brokerów.",
+        "loading": "Ładowanie szczegółów..."
+    },
+    "ProductConfigurator": {
+        "soldUnavailable": "Sprzedany / Niedostępny",
+        "viewBag": "Pokaż koszyk",
+        "viewInBag": "Pokaż w koszyku",
+        "selectOptions": "Wybierz opcje",
+        "addToBag": "Dodaj do koszyka",
+        "selectColor": "Wybierz kolor",
+        "variantSpecs": "Wariant / Specyfikacja",
+        "interested": "Zainteresowany?",
+        "freeShipping": "Darmowa dostawa dla wszystkich zamówień.",
+        "totalPrice": "Suma"
+    },
+    "Auth": {
+        "Login": {
+            "title": "Logowanie",
+            "description": "Wpisz swój email poniżej, aby zalogować się do konta",
+            "email": "Email",
+            "password": "Hasło",
+            "forgotPassword": "Zapomniałeś hasła?",
+            "submit": "Zaloguj się",
+            "submitLoading": "Logowanie...",
+            "noAccount": "Nie masz konta?",
+            "signUpLink": "Zarejestruj się",
+            "error": "Wystąpił błąd"
+        },
+        "SignUp": {
+            "title": "Rejestracja",
+            "description": "Utwórz nowe konto",
+            "fullName": "Imię i nazwisko",
+            "email": "Email",
+            "password": "Hasło",
+            "repeatPassword": "Powtórz hasło",
+            "passwordsDoNotMatch": "Hasła nie są identyczne",
+            "submit": "Zarejestruj się",
+            "submitLoading": "Tworzenie konta...",
+            "hasAccount": "Masz już konto?",
+            "loginLink": "Zaloguj się",
+            "successTitle": "Dziękujemy za rejestrację!",
+            "successDescription": "Sprawdź swój email, aby potwierdzić konto",
+            "successMessage": "Pomyślnie zarejestrowano. Proszę sprawdź swój email, aby potwierdzić konto przed zalogowaniem."
+        },
+        "ForgotPassword": {
+            "title": "Zresetuj hasło",
+            "description": "Wpisz swój email, a wyślemy Ci link do resetowania hasła",
+            "email": "Email",
+            "submit": "Wyślij email resetujący",
+            "submitLoading": "Wysyłanie...",
+            "successTitle": "Sprawdź email",
+            "successDescription": "Instrukcje resetowania hasła wysłane",
+            "successMessage": "Jeśli zarejestrowałeś się przy użyciu tego adresu email, otrzymasz wiadomość z instrukcjami resetowania hasła.",
+            "hasAccount": "Masz już konto?",
+            "loginLink": "Zaloguj się"
+        },
+        "UpdatePassword": {
+            "title": "Zresetuj hasło",
+            "description": "Wpisz nowe hasło poniżej.",
+            "password": "Nowe hasło",
+            "submit": "Zapisz nowe hasło",
+            "submitLoading": "Zapisywanie..."
+        },
+        "Error": {
+            "title": "Przepraszamy, coś poszło nie tak.",
+            "codeError": "Kod błędu: {error}",
+            "unspecifiedError": "Wystąpił nieokreślony błąd."
+        }
+    },
+    "PrivacyPolicy": {
+        "title": "Polityka Prywatności",
+        "lastUpdated": "Ostatnia aktualizacja: {date}",
+        "sections": {
+            "intro": {
+                "title": "1. Wstęp",
+                "content": "Witamy w SmartwaveUK („my”, „nasz” lub „nas”). Jesteśmy zobowiązani do ochrony Twoich danych osobowych i prawa do prywatności. Niniejsza Polityka Prywatności opisuje, w jaki sposób gromadzimy, wykorzystujemy i przetwarzamy Twoje dane osobowe, gdy korzystasz z naszej strony internetowej i usług."
+            },
+            "infoCollect": {
+                "title": "2. Informacje, które gromadzimy",
+                "content": "Gromadzimy dane osobowe, które podajesz nam dobrowolnie podczas rejestracji, dokonywania zakupów lub kontaktu z nami. Może to obejmować:",
+                "list": {
+                    "item1": "Imię i nazwisko, adres email, numer telefonu i adres pocztowy.",
+                    "item2": "Informacje o płatnościach i adres rozliczeniowy.",
+                    "item3": "Historia zamówień i preferencje."
+                }
+            },
+            "howUse": {
+                "title": "3. Jak wykorzystujemy Twoje informacje",
+                "content": "Wykorzystujemy Twoje dane osobowe do:",
+                "list": {
+                    "item1": "Przetwarzania i realizacji Twoich zamówień.",
+                    "item2": "Komunikacji z Tobą w sprawie Twojego konta lub zamówień.",
+                    "item3": "Ulepszania naszej strony internetowej i obsługi klienta.",
+                    "item4": "Wysyłania Ci informacji marketingowych (jeśli wyraziłeś na to zgodę)."
+                }
+            },
+            "sharing": {
+                "title": "4. Udostępnianie Twoich informacji",
+                "content": "Nie sprzedajemy Twoich danych osobowych. Możemy udostępniać Twoje dane zaufanym zewnętrznym dostawcom usług (takim jak procesory płatności i firmy kurierskie) wyłącznie w celu realizacji naszych usług dla Ciebie."
+            },
+            "contact": {
+                "title": "5. Kontakt z nami",
+                "content": "Jeśli masz jakiekolwiek pytania dotyczące niniejszej Polityki Prywatności, skontaktuj się z nami pod adresem support@smartwaveuk.com."
+            }
+        }
+    },
+    "Shipping": {
+        "title": "Wysyłka i Dostawa",
+        "freeNextDay": {
+            "title": "Darmowa dostawa następnego dnia",
+            "description": "Dla wszystkich zamówień w UK powyżej 200 GBP złożonych przed godziną 14:00."
+        },
+        "insured": {
+            "title": "Ubezpieczona przesyłka",
+            "description": "Wszystkie paczki są w pełni ubezpieczone od zgubienia lub uszkodzenia."
+        },
+        "domestic": {
+            "title": "Wysyłka krajowa (Wielka Brytania)",
+            "content": "Do wszystkich przesyłek krajowych używamy niezawodnych kurierów, takich jak Royal Mail i DPD.",
+            "standard": "Dostawa standardowa (2-3 dni robocze)",
+            "standardDesc": "Darmowa dla wszystkich zamówień.",
+            "nextDay": "Dostawa następnego dnia",
+            "nextDayDesc": "5,99 GBP (Darmowa dla zamówień powyżej 200 GBP). Zamów do 14:00 Pon-Pt."
+        },
+        "international": {
+            "title": "Wysyłka międzynarodowa",
+            "content": "Wysyłamy do wybranych miejsc na świecie. Koszty i czas wysyłki różnią się w zależności od lokalizacji i zostaną obliczone przy kasie. Pamiętaj, że klienci międzynarodowi są odpowiedzialni za wszelkie cła lub podatki importowe."
+        },
+        "processing": {
+            "title": "Przetwarzanie zamówienia",
+            "content": "Zamówienia złożone przed 14:00 GMT w dni robocze są zazwyczaj przetwarzane i wysyłane tego samego dnia. Zamówienia złożone po tym czasie lub w weekendy/święta zostaną wysłane następnego dnia roboczego."
+        },
+        "returns": {
+            "title": "Polityka zwrotów",
+            "content": "Chcemy, abyś był w pełni zadowolony z zakupu. Jeśli nie jesteś usatysfakcjonowany, możesz zwrócić przedmioty w ciągu 14 dni od otrzymania w celu uzyskania zwrotu pieniędzy lub wymiany, pod warunkiem, że są w oryginalnym stanie i opakowaniu.",
+            "contact": "Aby rozpocząć zwrot, skontaktuj się z naszym zespołem wsparcia, podając numer zamówienia."
+        }
+    },
+    "Terms": {
+        "title": "Warunki korzystania z usługi",
+        "lastUpdated": "Ostatnia aktualizacja: {date}",
+        "sections": {
+            "acceptance": {
+                "title": "1. Akceptacja warunków",
+                "content": "Uzyskując dostęp i korzystając ze strony internetowej SmartwaveUK, zgadzasz się przestrzegać niniejszych Warunków korzystania z usługi. Jeśli nie zgadzasz się z tymi warunkami, prosimy nie korzystaj z naszych usług."
+            },
+            "products": {
+                "title": "2. Produkty i usługi",
+                "content": "Staramy się prezentować nasze produkty tak dokładnie, jak to możliwe. Jednak nie gwarantujemy, że opisy produktów, zdjęcia lub inne treści na stronie są dokładne, kompletne, niezawodne, aktualne lub wolne od błędów. Wszystkie produkty podlegają dostępności."
+            },
+            "pricing": {
+                "title": "3. Ceny i płatności",
+                "content": "Wszystkie ceny są podane w walucie wyświetlanej przy kasie. Zastrzegamy sobie prawo do zmiany cen w dowolnym momencie bez powiadomienia. Płatności muszą zostać otrzymane w całości przed wysłaniem zamówień."
+            },
+            "returns": {
+                "title": "4. Zwroty i reklamacje",
+                "content": "Oferujemy politykę zwrotów za wadliwe lub niezadowalające przedmioty w ramach czasowych określonych w naszej Polityce Wysyłki i Zwrotów. Przedmioty muszą zostać zwrócone w oryginalnym stanie."
+            },
+            "liability": {
+                "title": "5. Ograniczenie odpowiedzialności",
+                "content": "SmartwaveUK nie ponosi odpowiedzialności za jakiekolwiek pośrednie, przypadkowe, specjalne lub wtórne szkody wynikające z korzystania z naszej strony internetowej lub produktów."
+            },
+            "changes": {
+                "title": "6. Zmiany warunków",
+                "content": "Zastrzegamy sobie prawo do zmiany niniejszych Warunków korzystania z usługi w dowolnym momencie. Dalsze korzystanie ze strony internetowej po wprowadzeniu jakichkolwiek zmian oznacza akceptację nowych warunków."
+            }
+        }
+    }
+}

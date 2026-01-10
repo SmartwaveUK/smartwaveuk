@@ -6,9 +6,12 @@ import { PhoneGrid } from "@/components/phone-grid";
 import { HeroBanner } from "@/components/hero-banner";
 import { Categories } from "@/components/categories";
 import { Search, ShoppingBag, Camera } from "lucide-react";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import { Navbar } from "./navbar";
-import { useSearchParams, usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter } from "@/i18n/routing";
+import { useSearchParams } from "next/navigation";
+import { useTranslations } from "next-intl";
+import LanguageSwitcher from "@/components/language-switcher";
 
 
 export function StoreDashboard({
@@ -18,6 +21,7 @@ export function StoreDashboard({
     initialPhones: Phone[],
     currency?: string
 }) {
+    const t = useTranslations('StoreDashboard');
     const searchParams = useSearchParams();
     const pathname = usePathname();
     const { replace } = useRouter();
@@ -33,10 +37,10 @@ export function StoreDashboard({
         : { budget: 500, premium: 1000, labelBudget: '500', labelPremium: '1000' };
 
     const PRICE_RANGES = [
-        { id: 'all', label: 'All' },
-        { id: 'budget', label: `Budget (<${thresholds.labelBudget})` },
-        { id: 'mid', label: `Mid-Range (${thresholds.labelBudget}-${thresholds.labelPremium})` },
-        { id: 'premium', label: `Premium (${thresholds.labelPremium}+)` },
+        { id: 'all', label: t('all') },
+        { id: 'budget', label: `${t('budget')} (<${thresholds.labelBudget})` },
+        { id: 'mid', label: `${t('midRange')} (${thresholds.labelBudget}-${thresholds.labelPremium})` },
+        { id: 'premium', label: `${t('premium')} (${thresholds.labelPremium}+)` },
     ];
 
     // Update local state when URL changes (e.g. from desktop navbar)
@@ -76,7 +80,7 @@ export function StoreDashboard({
                     <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                     <input
                         type="text"
-                        placeholder="Search phones..."
+                        placeholder={t('searchPlaceholder')}
                         value={searchQuery}
                         onChange={(e) => handleSearch(e.target.value)}
                         className="w-full h-10 bg-white rounded-full pl-10 pr-10 text-base focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all placeholder:text-muted-foreground"
@@ -93,12 +97,9 @@ export function StoreDashboard({
                         <Camera className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                     )}
                 </div>
-                <button className="relative w-10 h-10 flex items-center justify-center rounded-full bg-slate-100 hover:bg-slate-200 transition-colors">
-                    <Link href={'/cart'}>
-                        <ShoppingBag className="w-5 h-5 text-foreground" />
-                        <span className="absolute top-2 right-2 w-2 h-2 bg-blue-500 rounded-full ring-2 ring-white"></span>
-                    </Link>
-                </button>
+                <div className="relative w-10 h-10 flex items-center justify-center rounded-full bg-slate-100 hover:bg-slate-200 transition-colors">
+                    <LanguageSwitcher />
+                </div>
 
             </div>
 
@@ -113,7 +114,7 @@ export function StoreDashboard({
 
                         <section className="space-y-4">
                             <div className="flex items-center justify-center">
-                                <h3 className="font-bold text-lg">Categories</h3>
+                                <h3 className="font-bold text-lg">{t('categories')}</h3>
                             </div>
                             <div className="flex items-center justify-center">
                                 <Categories />
@@ -128,10 +129,10 @@ export function StoreDashboard({
                 <section className="space-y-4">
                     <div className="flex items-center justify-between">
                         <h3 className="font-bold text-lg" style={{ background: 'linear-gradient(to left, #90adecff, #f79a69ff)', color: 'white', padding: '5px 10px', borderRadius: '30px' }}>
-                            {searchQuery ? `Results for "${searchQuery}"` : "Flash Deals for You"}
+                            {searchQuery ? `${t('resultsFor')} "${searchQuery}"` : t('flashDeals')}
                         </h3>
                         {!searchQuery && (
-                            <Link href="/shop" className="bg-white px-2 py-1 rounded-full border border-blue-600 text-xs font-semibold text-blue-600 hover:text-white hover:bg-blue-600 hover:border-blue-600 shrink-0" style={{ border: '0.5px solid blue' }}>See All</Link>
+                            <Link href="/shop" className="bg-white px-2 py-1 rounded-full border border-blue-600 text-xs font-semibold text-blue-600 hover:text-white hover:bg-blue-600 hover:border-blue-600 shrink-0" style={{ border: '0.5px solid blue' }}>{t('seeAll')}</Link>
                         )}
                     </div>
 
@@ -140,12 +141,12 @@ export function StoreDashboard({
                     {/* No Results State */}
                     {searchQuery && filteredPhones.length === 0 && (
                         <div className="text-center py-10 text-muted-foreground">
-                            <p>No phones found matching your search.</p>
+                            <p>{t('noResults')}</p>
                             <button
                                 onClick={() => handleSearch("")}
                                 className="text-blue-600 hover:underline mt-2 text-sm"
                             >
-                                Clear search
+                                {t('clearSearch')}
                             </button>
                         </div>
                     )}
@@ -160,9 +161,9 @@ export function StoreDashboard({
                             <div
                                 className="flex items-center justify-between gap-2 py-2 p-4 text-white"
                             >
-                                <h3 className="font-bold text-lg shrink-0" style={{ background: 'linear-gradient(to left, #90adecff, #f79a69ff)', color: 'white', padding: '5px 10px', borderRadius: '30px' }}>New items for You</h3>
+                                <h3 className="font-bold text-lg shrink-0" style={{ background: 'linear-gradient(to left, #90adecff, #f79a69ff)', color: 'white', padding: '5px 10px', borderRadius: '30px' }}>{t('newItems')}</h3>
                                 <div className="h-px bg-white/50 flex-1 mx-2" />
-                                <Link href="/shop" className="bg-white px-2 py-1 rounded-full border border-blue-600 text-xs font-semibold text-blue-600 hover:text-white hover:bg-blue-600 hover:border-blue-600 shrink-0" style={{ border: '0.5px solid blue' }}>See All</Link>
+                                <Link href="/shop" className="bg-white px-2 py-1 rounded-full border border-blue-600 text-xs font-semibold text-blue-600 hover:text-white hover:bg-blue-600 hover:border-blue-600 shrink-0" style={{ border: '0.5px solid blue' }}>{t('seeAll')}</Link>
                             </div>
                             <PhoneGrid phones={initialPhones.filter(p => p.condition.toLowerCase() === 'new')} currency={currency} mobileColumns={1} />
                         </section>
@@ -173,7 +174,7 @@ export function StoreDashboard({
                         {/* Shop by Price */}
                         <section className="space-y-6">
                             <div className="flex flex-row items-center justify-between gap-4">
-                                <h3 className="font-bold text-lg shrink-0 text-center sm:text-left" style={{ background: 'linear-gradient(to left, #90adecff, #f79a69ff)', color: 'white', padding: '5px 10px', borderRadius: '30px', width: '150px' }}>Shop by Price</h3>
+                                <h3 className="font-bold text-lg shrink-0 text-center sm:text-left" style={{ background: 'linear-gradient(to left, #90adecff, #f79a69ff)', color: 'white', padding: '5px 10px', borderRadius: '30px', width: '150px' }}>{t('shopByPrice')}</h3>
                                 <div className="flex p-1 bg-slate-100 rounded-full overflow-x-auto gap-2 border border-slate-200 flex-1 min-w-0 w-auto">
                                     {PRICE_RANGES.map((range) => (
                                         <button

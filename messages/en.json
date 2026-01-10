@@ -1,0 +1,335 @@
+{
+    "HomePage": {
+        "title": "Premium Phones",
+        "subtitle": "Best prices on new and used gadgets"
+    },
+    "Navigation": {
+        "home": "Home",
+        "shop": "Shop",
+        "cart": "Cart",
+        "account": "Account",
+        "chat": "Chat"
+    },
+    "Cart": {
+        "title": "Your Cart",
+        "empty": "Your cart is empty",
+        "checkout": "Checkout",
+        "bagEmptyTitle": "Your bag is empty",
+        "bagEmptyDescription": "Looks like you haven't added any phones to your bag yet.",
+        "browsePhones": "Browse Phones",
+        "continueShopping": "Continue Shopping",
+        "yourRequestBag": "Your Request Bag ({count})",
+        "remove": "Remove",
+        "totalValue": "Total Value",
+        "proceedToCheckout": "Proceed to Checkout",
+        "taxesShippingCalculated": "Taxes and shipping calculated at checkout."
+    },
+    "Checkout": {
+        "title": "Checkout",
+        "backToCart": "Back to Cart",
+        "contactInfo": "Contact Information",
+        "shippingAddress": "Shipping Address",
+        "orderSummary": "Order Summary",
+        "total": "Total",
+        "proceedPayment": "Proceed to Payment",
+        "secureEncryption": "Secure Encryption",
+        "bagEmpty": "Your bag is empty",
+        "goBackShopping": "Go back to shopping",
+        "orderSuccess": "Order Placed Successfully!",
+        "accountCreated": "Account Created",
+        "accountCreatedDescription": "An account has been created for you. Please check your email for login details to track your order.",
+        "paymentDetails": "Payment Details",
+        "goToOrders": "Go to My Orders",
+        "makeTransfer": "Please make a bank transfer to the following broker account:",
+        "bank": "Bank:",
+        "sortCode": "Sort Code:",
+        "accountNumber": "Account:",
+        "reference": "Reference:",
+        "orderProcessed": "* Your order will be processed once payment is received.",
+        "fullName": "Full Name",
+        "emailAddress": "Email Address",
+        "phoneNumber": "Phone Number",
+        "addressLine1": "Address Line 1",
+        "city": "City",
+        "postcode": "Postcode",
+        "somethingWentWrong": "Something went wrong. Please try again."
+    },
+    "Account": {
+        "title": "My Account",
+        "profile": "Profile",
+        "signOut": "Sign Out",
+        "orderHistory": "Order History",
+        "noOrders": "No orders yet",
+        "startExploring": "Start exploring our collection to find your next gadgets.",
+        "browseItems": "Browse Items",
+        "order": "Order",
+        "paymentRequired": "Payment Required",
+        "makeTransfer": "Please make a bank transfer to complete your order:",
+        "unknownDevice": "Unknown Device",
+        "valuedCustomer": "Valued Customer",
+        "status": {
+            "paid": "Paid",
+            "pending": "Pending",
+            "shipped": "Shipped",
+            "cancelled": "Cancelled"
+        }
+    },
+    "StoreDashboard": {
+        "searchPlaceholder": "Search phones...",
+        "categories": "Categories",
+        "flashDeals": "Flash Deals for You",
+        "resultsFor": "Results for",
+        "seeAll": "See All",
+        "noResults": "No phones found matching your search.",
+        "clearSearch": "Clear search",
+        "newItems": "New items for You",
+        "shopByPrice": "Shop by Price",
+        "all": "All",
+        "budget": "Budget",
+        "midRange": "Mid-Range",
+        "premium": "Premium"
+    },
+    "HeroBanner": {
+        "shopNow": "Shop Now",
+        "slide1": {
+            "title": "iPhone 16 Pro",
+            "subtitle": "Forged in Titanium. Powered by Apple Intelligence."
+        },
+        "slide2": {
+            "title": "Black Titanium",
+            "subtitle": "Sleek. Sophisticated. Pro performance."
+        },
+        "slide3": {
+            "title": "Red Hot Deals",
+            "subtitle": "Exclusive colors at unbeatable broker prices."
+        }
+    },
+    "Categories": {
+        "mobile": "Mobile",
+        "headphones": "Headphones",
+        "tablets": "Tablets",
+        "laptops": "Laptops",
+        "speakers": "Speakers",
+        "more": "More"
+    },
+    "Common": {
+        "loading": "Loading...",
+        "error": "Something went wrong",
+        "noItems": "No items available at the moment.",
+        "checkBack": "Check back later for new listings.",
+        "noImage": "No Image"
+    },
+    "Footer": {
+        "description": "Your trusted destination for premium gadgets. We offer the best prices on new, used, and refurbished devices with guaranteed quality.",
+        "quickLinks": "Quick Links",
+        "newArrivals": "New Arrivals",
+        "support": "Support",
+        "stayUpdated": "Stay Updated",
+        "subscribeText": "Subscribe to our newsletter for the latest drops and exclusive deals.",
+        "emailPlaceholder": "Enter your email",
+        "rightsReserved": "All rights reserved.",
+        "privacy": "Privacy Policy",
+        "terms": "Terms of Service",
+        "shipping": "Shipping Info"
+    },
+    "ShopPage": {
+        "title": "Shop All",
+        "resultsFound": "{count, plural, =0 {No results found} one {# result found} other {# results found}}"
+    },
+    "Shop": {
+        "filters": "Filters",
+        "clearAll": "Clear All",
+        "priceRange": "Price Range",
+        "min": "Min",
+        "max": "Max",
+        "applyPrice": "Apply Price",
+        "brands": "Brands",
+        "condition": "Condition",
+        "availability": "Availability",
+        "inStockOnly": "In Stock Only",
+        "showResults": "Show Results",
+        "sortBy": "Sort by",
+        "sortOptions": {
+            "newest": "Newest Arrivals",
+            "price_asc": "Price: Low to High",
+            "price_desc": "Price: High to Low"
+        },
+        "conditions": {
+            "new": "New",
+            "refurbished": "Refurbished",
+            "used": "Used"
+        }
+    },
+    "ProductPage": {
+        "backToShop": "Back to shop",
+        "byBrand": "By {brand}",
+        "aboutProduct": "About this product",
+        "descriptionFallback": "The new {model} features a stunning display, powerful performance, and an advanced camera system. Quality checked and verified by our brokers.",
+        "loading": "Loading details..."
+    },
+    "ProductConfigurator": {
+        "soldUnavailable": "Sold / Unavailable",
+        "viewBag": "View Bag",
+        "viewInBag": "View in Bag",
+        "selectOptions": "Select Options",
+        "addToBag": "Add to Bag",
+        "selectColor": "Select Color",
+        "variantSpecs": "Variant/Specs",
+        "interested": "Interested?",
+        "freeShipping": "Free shipping on all orders.",
+        "totalPrice": "Total Price"
+    },
+    "Auth": {
+        "Login": {
+            "title": "Login",
+            "description": "Enter your email below to login to your account",
+            "email": "Email",
+            "password": "Password",
+            "forgotPassword": "Forgot your password?",
+            "submit": "Login",
+            "submitLoading": "Logging in...",
+            "noAccount": "Don't have an account?",
+            "signUpLink": "Sign up",
+            "error": "An error occurred"
+        },
+        "SignUp": {
+            "title": "Sign up",
+            "description": "Create a new account",
+            "fullName": "Full Name",
+            "email": "Email",
+            "password": "Password",
+            "repeatPassword": "Repeat Password",
+            "passwordsDoNotMatch": "Passwords do not match",
+            "submit": "Sign up",
+            "submitLoading": "Creating an account...",
+            "hasAccount": "Already have an account?",
+            "loginLink": "Login",
+            "successTitle": "Thank you for signing up!",
+            "successDescription": "Check your email to confirm",
+            "successMessage": "You've successfully signed up. Please check your email to confirm your account before signing in."
+        },
+        "ForgotPassword": {
+            "title": "Reset Your Password",
+            "description": "Type in your email and we'll send you a link to reset your password",
+            "email": "Email",
+            "submit": "Send reset email",
+            "submitLoading": "Sending...",
+            "successTitle": "Check Your Email",
+            "successDescription": "Password reset instructions sent",
+            "successMessage": "If you registered using your email and password, you will receive a password reset email.",
+            "hasAccount": "Already have an account?",
+            "loginLink": "Login"
+        },
+        "UpdatePassword": {
+            "title": "Reset Your Password",
+            "description": "Please enter your new password below.",
+            "password": "New password",
+            "submit": "Save new password",
+            "submitLoading": "Saving..."
+        },
+        "Error": {
+            "title": "Sorry, something went wrong.",
+            "codeError": "Code error: {error}",
+            "unspecifiedError": "An unspecified error occurred."
+        }
+    },
+    "PrivacyPolicy": {
+        "title": "Privacy Policy",
+        "lastUpdated": "Last updated: {date}",
+        "sections": {
+            "intro": {
+                "title": "1. Introduction",
+                "content": "Welcome to SmartwaveUK (\"we,\" \"our,\" or \"us\"). We are committed to protecting your personal information and your right to privacy. This Privacy Policy describes how we collect, use, and process your personal data when you use our website and services."
+            },
+            "infoCollect": {
+                "title": "2. Information We Collect",
+                "content": "We collect personal information that you provide to us voluntarily when you register, make a purchase, or contact us. This may include:",
+                "list": {
+                    "item1": "Name, email address, phone number, and postal address.",
+                    "item2": "Payment information and billing address.",
+                    "item3": "Order history and preferences."
+                }
+            },
+            "howUse": {
+                "title": "3. How We Use Your Information",
+                "content": "We use your personal information to:",
+                "list": {
+                    "item1": "Process and fulfill your orders.",
+                    "item2": "Communicate with you regarding your account or orders.",
+                    "item3": "Improve our website and customer service.",
+                    "item4": "Send you marketing communications (if you have opted in)."
+                }
+            },
+            "sharing": {
+                "title": "4. Sharing Your Information",
+                "content": "We do not sell your personal information. We may share your data with trusted third-party service providers (such as payment processors and shipping couriers) solely for the purpose of fulfilling our services to you."
+            },
+            "contact": {
+                "title": "5. Contact Us",
+                "content": "If you have any questions about this Privacy Policy, please contact us at support@smartwaveuk.com."
+            }
+        }
+    },
+    "Shipping": {
+        "title": "Shipping & Delivery",
+        "freeNextDay": {
+            "title": "Free Next Day Delivery",
+            "description": "On all UK orders over £200 placed before 2 PM."
+        },
+        "insured": {
+            "title": "Insured Shipping",
+            "description": "All packages are fully insured against loss or damage."
+        },
+        "domestic": {
+            "title": "Domestic Shipping (UK)",
+            "content": "We use reliable couriers like Royal Mail and DPD for all domestic shipments.",
+            "standard": "Standard Delivery (2-3 working days)",
+            "standardDesc": "Free for all orders.",
+            "nextDay": "Next Day Delivery",
+            "nextDayDesc": "£5.99 (Free on orders over £200). Order by 2 PM Mon-Fri."
+        },
+        "international": {
+            "title": "International Shipping",
+            "content": "We ship to select international destinations. Shipping costs and times vary by location and will be calculated at checkout. Please note that international customers are responsible for any customs duties or import taxes."
+        },
+        "processing": {
+            "title": "Order Processing",
+            "content": "Orders placed before 2 PM GMT on business days are typically processed and dispatched the same day. Orders placed after this time or on weekends/holidays will be dispatched the next business day."
+        },
+        "returns": {
+            "title": "Returns Policy",
+            "content": "We want you to be completely happy with your purchase. If you are not satisfied, you can return items within 14 days of receipt for a refund or exchange, provided they are in their original condition and packaging.",
+            "contact": "To initiate a return, please contact our support team with your order number."
+        }
+    },
+    "Terms": {
+        "title": "Terms of Service",
+        "lastUpdated": "Last updated: {date}",
+        "sections": {
+            "acceptance": {
+                "title": "1. Acceptance of Terms",
+                "content": "By accessing and using the SmartwaveUK website, you agree to comply with and be bound by these Terms of Service. If you do not agree to these terms, please do not use our services."
+            },
+            "products": {
+                "title": "2. Products and Services",
+                "content": "We strive to display our products as accurately as possible. However, we do not warrant that product descriptions, images, or other content on the site are accurate, complete, reliable, current, or error-free. All products are subject to availability."
+            },
+            "pricing": {
+                "title": "3. Pricing and Payments",
+                "content": "All prices are listed in the currency displayed at checkout. We reserve the right to change prices at any time without notice. Payments must be received in full before orders are dispatched."
+            },
+            "returns": {
+                "title": "4. Returns and Refunds",
+                "content": "We offer a return policy for defective or unsatisfactory items within the timeframe specified in our Shipping & Returns policy. Items must be returned in their original condition."
+            },
+            "liability": {
+                "title": "5. Limitation of Liability",
+                "content": "SmartwaveUK shall not be liable for any indirect, incidental, special, or consequential damages arising out of or in connection with the use of our website or products."
+            },
+            "changes": {
+                "title": "6. Changes to Terms",
+                "content": "We reserve the right to modify these Terms of Service at any time. Your continued use of the website following any changes indicates your acceptance of the new terms."
+            }
+        }
+    }
+}

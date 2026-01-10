@@ -6,6 +6,7 @@ import { MobileFilterDrawer } from "@/components/shop/mobile-filters";
 import { SortOptions } from "@/components/shop/sort-options";
 import { ActiveFilters } from "@/components/shop/active-filters";
 import { Phone } from "@/lib/types";
+import { getTranslations } from "next-intl/server";
 
 export const dynamic = 'force-dynamic';
 
@@ -14,6 +15,7 @@ export default async function ShopPage({
 }: {
     searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
+    const t = await getTranslations("ShopPage");
     const allPhones = await getPhones();
     const settings = await getSiteSettings();
     const currency = settings?.site_currency || 'USD';
@@ -72,9 +74,9 @@ export default async function ShopPage({
                 {/* Mobile Header / Controls */}
                 <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
                     <div>
-                        <h1 className="text-3xl font-bold tracking-tight">Shop All</h1>
+                        <h1 className="text-3xl font-bold tracking-tight">{t('title')}</h1>
                         <p className="text-muted-foreground mt-1 text-sm">
-                            {filteredPhones.length} {filteredPhones.length === 1 ? 'result' : 'results'} found
+                            {t('resultsFound', { count: filteredPhones.length })}
                         </p>
                     </div>
 

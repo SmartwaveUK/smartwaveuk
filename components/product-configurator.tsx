@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Check, ShoppingBag, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 interface ProductConfiguratorProps {
     phone: CartItem; // Using CartItem as base type (needs to match what we pass)
@@ -24,6 +25,7 @@ export function ProductConfigurator({
     priceFormatted
 }: ProductConfiguratorProps) {
     const { addItem, items } = useCart();
+    const t = useTranslations("ProductConfigurator");
     // Default selection logic: Select if only one option exists, otherwise undefined
     const [selectedColor, setSelectedColor] = useState<string | undefined>(colors.length === 1 ? colors[0] : undefined);
     const [selectedStorage, setSelectedStorage] = useState<string | undefined>(storageOptions.length === 1 ? storageOptions[0] : undefined);
@@ -65,7 +67,7 @@ export function ProductConfigurator({
                         mobile ? "flex-1 py-3" : "w-full py-3 px-4 border"
                     )}
                 >
-                    Sold / Unavailable
+                    {t('soldUnavailable')}
                 </button>
             );
         }
@@ -80,7 +82,7 @@ export function ProductConfigurator({
                     )}
                 >
                     <Check className="w-5 h-5" />
-                    {mobile ? "View Bag" : "View in Bag"}
+                    {mobile ? t('viewBag') : t('viewInBag')}
                 </Link>
             );
         }
@@ -94,7 +96,7 @@ export function ProductConfigurator({
                         mobile ? "flex-1 py-3" : "w-full py-3 px-4 border"
                     )}
                 >
-                    Select Options
+                    {t('selectOptions')}
                 </button>
             );
         }
@@ -113,7 +115,7 @@ export function ProductConfigurator({
                 ) : (
                     <>
                         <ShoppingBag className="w-5 h-5" />
-                        Add to Bag
+                        {t('addToBag')}
                     </>
                 )}
             </button>
@@ -125,7 +127,7 @@ export function ProductConfigurator({
             {/* Color Selection */}
             {colors.length > 0 && (
                 <div className="space-y-3">
-                    <span className="text-sm font-semibold">Select Color</span>
+                    <span className="text-sm font-semibold">{t('selectColor')}</span>
                     <div className="flex flex-wrap gap-2">
                         {colors.map((c) => (
                             <button
@@ -148,7 +150,7 @@ export function ProductConfigurator({
             {/* Storage Selection */}
             {storageOptions.length > 0 && (
                 <div className="space-y-3">
-                    <span className="text-sm font-semibold">Variant/Specs</span>
+                    <span className="text-sm font-semibold">{t('variantSpecs')}</span>
                     <div className="flex flex-wrap gap-3">
                         {storageOptions.map((s) => (
                             <button
@@ -170,17 +172,17 @@ export function ProductConfigurator({
 
             {/* Desktop Actions */}
             <div className="pt-4 p-6 bg-slate-50 border rounded-2xl md:block hidden">
-                <h3 className="font-semibold mb-4 text-lg">Interested?</h3>
+                <h3 className="font-semibold mb-4 text-lg">{t('interested')}</h3>
                 <CartButton />
                 <p className="text-xs text-muted-foreground mt-4 text-center">
-                    Free shipping on all orders.
+                    {t('freeShipping')}
                 </p>
             </div>
 
             {/* Mobile Actions (Sticky) */}
             <div className="md:hidden fixed bottom-0 left-0 right-0 p-4 bg-white border-t pb-safe z-50 flex gap-3 shadow-[0_-5px_20px_rgba(0,0,0,0.05)]">
                 <div className="flex-1 flex flex-col justify-center">
-                    <span className="text-xs text-muted-foreground">Total Price</span>
+                    <span className="text-xs text-muted-foreground">{t('totalPrice')}</span>
                     <span className="text-lg font-bold text-foreground">{priceFormatted}</span>
                 </div>
                 <CartButton mobile={true} />

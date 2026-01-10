@@ -1,19 +1,21 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
+import { useTranslations } from "next-intl";
 
 export function HeroBanner() {
+    const t = useTranslations("HeroBanner");
     const [currentSlide, setCurrentSlide] = useState(0);
 
     const slides = [
         {
             id: 1,
-            title: "iPhone 16 Pro",
-            subtitle: "Forged in Titanium. Powered by Apple Intelligence.",
+            title: t('slide1.title'),
+            subtitle: t('slide1.subtitle'),
             gradientOverlay: "from-blue-600",
             baseGradient: "from-blue-600 to-indigo-600",
             accentColor: "bg-indigo-600",
@@ -22,8 +24,8 @@ export function HeroBanner() {
         },
         {
             id: 2,
-            title: "Black Titanium",
-            subtitle: "Sleek. Sophisticated. Pro performance.",
+            title: t('slide2.title'),
+            subtitle: t('slide2.subtitle'),
             gradientOverlay: "from-black/80",
             baseGradient: "from-slate-800 to-black",
             accentColor: "bg-slate-700",
@@ -32,8 +34,8 @@ export function HeroBanner() {
         },
         {
             id: 3,
-            title: "Red Hot Deals",
-            subtitle: "Exclusive colors at unbeatable broker prices.",
+            title: t('slide3.title'),
+            subtitle: t('slide3.subtitle'),
             gradientOverlay: "from-red-600",
             baseGradient: "from-red-600 to-rose-600",
             accentColor: "bg-rose-600",
@@ -83,7 +85,7 @@ export function HeroBanner() {
                             href="/shop"
                             className="inline-flex items-center gap-2 px-4 py-2 bg-white text-black rounded-full text-xs sm:text-sm font-bold mt-2 shadow-sm hover:scale-105 transition-transform"
                         >
-                            Shop Now
+                            {t('shopNow')}
                             <ArrowRight className="w-4 h-4" />
                         </Link>
                     </div>

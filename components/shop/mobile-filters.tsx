@@ -3,16 +3,18 @@
 import { useState } from "react";
 import { Filter, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useTranslations } from "next-intl";
 import { FilterSidebar } from "./filter-sidebar";
 
 export function MobileFilterDrawer() {
     const [isOpen, setIsOpen] = useState(false);
+    const t = useTranslations("Shop");
 
     return (
         <div className="lg:hidden">
             <Button variant="outline" size="sm" onClick={() => setIsOpen(true)} className="gap-2">
                 <Filter className="w-4 h-4" />
-                Filters
+                {t('filters')}
             </Button>
 
             {isOpen && (
@@ -26,7 +28,7 @@ export function MobileFilterDrawer() {
                     {/* Drawer Content */}
                     <div className="relative w-[85vw] max-w-xs h-full bg-background p-6 shadow-xl animate-in slide-in-from-left duration-300 mr-auto flex flex-col">
                         <div className="flex items-center justify-between mb-6">
-                            <h2 className="text-lg font-bold">Filters</h2>
+                            <h2 className="text-lg font-bold">{t('filters')}</h2>
                             <Button variant="ghost" size="icon" onClick={() => setIsOpen(false)}>
                                 <X className="w-5 h-5" />
                             </Button>
@@ -56,7 +58,7 @@ export function MobileFilterDrawer() {
 
                         <div className="pt-6 border-t mt-auto">
                             <Button className="w-full" onClick={() => setIsOpen(false)}>
-                                Show Results
+                                {t('showResults')}
                             </Button>
                         </div>
                     </div>
@@ -77,6 +79,7 @@ import { Input } from "@/components/ui/input";
 function FilterContent() {
     const router = useRouter();
     const searchParams = useSearchParams();
+    const t = useTranslations("Shop");
 
     // Initial state from URL
     const [priceRange, setPriceRange] = useState({
@@ -184,17 +187,17 @@ function FilterContent() {
                     className="text-muted-foreground h-auto p-0 hover:text-foreground text-sm"
                     onClick={() => router.push('/shop')}
                 >
-                    Clear All
+                    {t('clearAll')}
                 </Button>
             </div>
 
             {/* Price Range */}
             <div className="space-y-4">
-                <h4 className="font-medium text-sm">Price Range</h4>
+                <h4 className="font-medium text-sm">{t('priceRange')}</h4>
                 <div className="flex items-center gap-2">
                     <Input
                         type="number"
-                        placeholder="Min"
+                        placeholder={t('min')}
                         value={priceRange.min}
                         onChange={(e) => setPriceRange({ ...priceRange, min: e.target.value })}
                         className="h-9"
@@ -202,20 +205,20 @@ function FilterContent() {
                     <span className="text-muted-foreground">-</span>
                     <Input
                         type="number"
-                        placeholder="Max"
+                        placeholder={t('max')}
                         value={priceRange.max}
                         onChange={(e) => setPriceRange({ ...priceRange, max: e.target.value })}
                         className="h-9"
                     />
                 </div>
                 <Button variant="outline" size="sm" className="w-full" onClick={handlePriceApply}>
-                    Apply Price
+                    {t('applyPrice')}
                 </Button>
             </div>
 
             {/* Brands */}
             <div className="space-y-4">
-                <h4 className="font-medium text-sm">Brands</h4>
+                <h4 className="font-medium text-sm">{t('brands')}</h4>
                 <div className="space-y-3">
                     {brands.map((brand) => (
                         <div key={brand} className="flex items-center space-x-2">
@@ -237,7 +240,7 @@ function FilterContent() {
 
             {/* Condition */}
             <div className="space-y-4">
-                <h4 className="font-medium text-sm">Condition</h4>
+                <h4 className="font-medium text-sm">{t('condition')}</h4>
                 <div className="space-y-3">
                     {conditions.map((condition) => (
                         <div key={condition} className="flex items-center space-x-2">
@@ -250,7 +253,7 @@ function FilterContent() {
                                 htmlFor={`mobile-condition-${condition}`}
                                 className="text-sm font-normal cursor-pointer text-muted-foreground peer-data-[state=checked]:text-foreground peer-data-[state=checked]:font-medium"
                             >
-                                {condition}
+                                {t(`conditions.${condition.toLowerCase()}`)}
                             </Label>
                         </div>
                     ))}
@@ -259,7 +262,7 @@ function FilterContent() {
 
             {/* Availability */}
             <div className="space-y-4">
-                <h4 className="font-medium text-sm">Availability</h4>
+                <h4 className="font-medium text-sm">{t('availability')}</h4>
                 <div className="flex items-center space-x-2">
                     <Checkbox
                         id="mobile-in-stock"
@@ -267,7 +270,7 @@ function FilterContent() {
                         onCheckedChange={(c) => toggleAvailability(c as boolean)}
                     />
                     <Label htmlFor="mobile-in-stock" className="text-sm font-normal cursor-pointer">
-                        In Stock Only
+                        {t('inStockOnly')}
                     </Label>
                 </div>
             </div>

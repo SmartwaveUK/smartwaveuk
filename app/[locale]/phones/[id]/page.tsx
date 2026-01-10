@@ -9,10 +9,12 @@ import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { ProductGallery } from "@/components/product-gallery";
 import { ProductConfigurator } from "@/components/product-configurator";
+import { getTranslations } from "next-intl/server";
 
 async function PhoneDetailsContent({ id }: { id: string }) {
     const phone = await getPhone(id);
     const settings = await getSiteSettings();
+    const t = await getTranslations("ProductPage");
 
     if (!phone) {
         notFound();
@@ -40,7 +42,7 @@ async function PhoneDetailsContent({ id }: { id: string }) {
         : [];
 
     // Description fallback
-    const description = phone.description || `The new ${phone.model} features a stunning display, powerful performance, and an advanced camera system. Quality checked and verified by our brokers.`;
+    const description = phone.description || t('descriptionFallback', { model: phone.model });
 
     // Randomize rating deterministically based on ID
     const idNum = id.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
@@ -66,7 +68,7 @@ async function PhoneDetailsContent({ id }: { id: string }) {
                             </div>
 
                             <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                                <span>By {phone.brand}</span>
+                                <span>{t('byBrand', { brand: phone.brand })}</span>
                                 {phone.category && (
                                     <>
                                         <span className="w-1 h-1 rounded-full bg-slate-300"></span>
@@ -112,7 +114,7 @@ async function PhoneDetailsContent({ id }: { id: string }) {
 
                         {/* Description */}
                         <div className="pt-2">
-                            <h3 className="font-semibold text-lg mb-2">About this product</h3>
+                            <h3 className="font-semibold text-lg mb-2">{t('aboutProduct')}</h3>
                             <p className="text-base text-muted-foreground leading-relaxed whitespace-pre-line">
                                 {description}
                             </p>
@@ -126,6 +128,7 @@ async function PhoneDetailsContent({ id }: { id: string }) {
 
 export default async function PhonePage({ params }: { params: Promise<{ id: string }> }) {
     const { id } = await params;
+    const t = await getTranslations("ProductPage");
 
     return (
         <main className="min-h-screen bg-background pb-32 md:pb-20 pt-8">
@@ -148,11 +151,11 @@ export default async function PhonePage({ params }: { params: Promise<{ id: stri
             <div className="hidden md:block container mx-auto px-4 mb-8">
                 <Link href="/shop" className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground transition-colors">
                     <ArrowLeft className="w-4 h-4 mr-2" />
-                    Back to shop
+                    {t('backToShop')}
                 </Link>
             </div>
 
-            <Suspense fallback={<div className="container mx-auto px-5 py-20 text-center animate-pulse">Loading details...</div>}>
+            <Suspense fallback={<div className="container mx-auto px-5 py-20 text-center animate-pulse">{t('loading')}</div>}>
                 <PhoneDetailsContent id={id} />
             </Suspense>
         </main>

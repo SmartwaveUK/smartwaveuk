@@ -3,11 +3,12 @@
 import { useCart } from "@/components/providers/cart-provider";
 import { formatPrice } from "@/lib/utils";
 import { ArrowLeft, Loader2, Lock, ShoppingBag } from "lucide-react";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import { createClient } from "@/lib/supabase/client";
 import { useState, useEffect } from "react";
 import { handleCheckoutOrder } from "@/lib/actions";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/i18n/routing";
+import { useTranslations } from "next-intl";
 
 export default function CheckoutPage() {
     const { items, clearCart, cartTotal } = useCart();
@@ -20,6 +21,8 @@ export default function CheckoutPage() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
+
+    const t = useTranslations("Checkout");
 
     useEffect(() => {
         const fetchUser = async () => {
@@ -68,7 +71,7 @@ export default function CheckoutPage() {
                 clearCart();
             }
         } catch (e) {
-            setError("Something went wrong. Please try again.");
+            setError(t('somethingWentWrong'));
         } finally {
             setIsSubmitting(false);
         }
@@ -77,8 +80,8 @@ export default function CheckoutPage() {
     if (items.length === 0 && !successData) {
         return (
             <div className="container mx-auto px-4 py-20 text-center">
-                <h2 className="text-2xl font-bold mb-4">Your bag is empty</h2>
-                <Link href="/" className="text-blue-600 hover:underline">Go back to shopping</Link>
+                <h2 className="text-2xl font-bold mb-4">{t('bagEmpty')}</h2>
+                <Link href="/" className="text-blue-600 hover:underline">{t('goBackShopping')}</Link>
             </div>
         )
     }
@@ -91,43 +94,43 @@ export default function CheckoutPage() {
                         <ShoppingBag className="w-8 h-8" />
                     </div>
 
-                    <h1 className="text-3xl font-bold text-slate-900">Order Placed Successfully!</h1>
+                    <h1 className="text-3xl font-bold text-slate-900">{t('orderSuccess')}</h1>
 
                     {successData.newAccount && (
                         <div className="bg-blue-50 p-4 rounded-xl text-blue-800 text-sm">
-                            <p className="font-semibold mb-1">Account Created</p>
-                            <p>An account has been created for you. Please check your email for login details to track your order.</p>
+                            <p className="font-semibold mb-1">{t('accountCreated')}</p>
+                            <p>{t('accountCreatedDescription')}</p>
                         </div>
                     )}
 
                     <div className="bg-slate-50 p-6 rounded-xl border border-slate-200 text-left">
                         <h3 className="font-semibold text-lg mb-4 flex items-center gap-2">
-                            Payment Details
+                            {t('paymentDetails')}
                         </h3>
                         <div className="space-y-3 text-sm text-slate-700">
-                            <p>Please make a bank transfer to the following broker account:</p>
+                            <p>{t('makeTransfer')}</p>
                             <div className="grid grid-cols-3 gap-2 py-2">
-                                <span className="text-slate-500">Bank:</span>
-                                <span className="col-span-2 font-medium">PhoneBox UK Ltd</span>
+                                <span className="text-slate-500">{t('bank')}</span>
+                                <span className="col-span-2 font-medium">Smart Wave UK</span>
 
-                                <span className="text-slate-500">Sort Code:</span>
+                                <span className="text-slate-500">{t('sortCode')}</span>
                                 <span className="col-span-2 font-mono">00-11-22</span>
 
-                                <span className="text-slate-500">Account:</span>
+                                <span className="text-slate-500">{t('accountNumber')}</span>
                                 <span className="col-span-2 font-mono">12345678</span>
 
-                                <span className="text-slate-500">Reference:</span>
+                                <span className="text-slate-500">{t('reference')}</span>
                                 <span className="col-span-2 font-mono">ORDER-{new Date().getTime().toString().slice(-6)}</span>
                             </div>
                             <p className="text-xs text-muted-foreground mt-2">
-                                * Your order will be processed once payment is received.
+                                {t('orderProcessed')}
                             </p>
                         </div>
                     </div>
 
                     <div className="pt-4">
                         <Link href="/account" className="inline-flex items-center justify-center px-8 py-3 bg-slate-900 text-white font-medium rounded-xl hover:bg-slate-800 transition-colors">
-                            Go to My Orders
+                            {t('goToOrders')}
                         </Link>
                     </div>
                 </div>
@@ -139,23 +142,23 @@ export default function CheckoutPage() {
         <div className="container mx-auto px-4 py-10 md:py-16">
             <Link href="/cart" className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground mb-8">
                 <ArrowLeft className="w-4 h-4 mr-2" />
-                Back to Cart
+                {t('backToCart')}
             </Link>
 
             <div className="grid lg:grid-cols-12 gap-10">
                 {/* Checkout Form */}
                 <div className="lg:col-span-7">
-                    <h1 className="text-3xl font-bold mb-8">Checkout</h1>
+                    <h1 className="text-3xl font-bold mb-8">{t('title')}</h1>
 
                     <form id="checkout-form" onSubmit={handleSubmit} className="space-y-8">
                         {/* Contact Info */}
                         <div className="bg-white border rounded-2xl p-6 shadow-sm space-y-4">
                             <h2 className="text-xl font-semibold flex items-center gap-2">
-                                1. Contact Information
+                                1. {t('contactInfo')}
                             </h2>
                             <div className="grid md:grid-cols-2 gap-4">
                                 <div className="space-y-2">
-                                    <label htmlFor="name" className="text-sm font-medium">Full Name</label>
+                                    <label htmlFor="name" className="text-sm font-medium">{t('fullName')}</label>
                                     <input
                                         id="name"
                                         name="name"
@@ -167,7 +170,7 @@ export default function CheckoutPage() {
                                     />
                                 </div>
                                 <div className="space-y-2">
-                                    <label htmlFor="email" className="text-sm font-medium">Email Address</label>
+                                    <label htmlFor="email" className="text-sm font-medium">{t('emailAddress')}</label>
                                     <input
                                         id="email"
                                         name="email"
@@ -180,7 +183,7 @@ export default function CheckoutPage() {
                                     />
                                 </div>
                                 <div className="space-y-2 md:col-span-2">
-                                    <label htmlFor="phone" className="text-sm font-medium">Phone Number</label>
+                                    <label htmlFor="phone" className="text-sm font-medium">{t('phoneNumber')}</label>
                                     <input
                                         id="phone"
                                         name="phone"
@@ -197,10 +200,10 @@ export default function CheckoutPage() {
 
                         {/* Shipping Address */}
                         <div className="bg-white border rounded-2xl p-6 shadow-sm space-y-4">
-                            <h2 className="text-xl font-semibold">2. Shipping Address</h2>
+                            <h2 className="text-xl font-semibold">2. {t('shippingAddress')}</h2>
                             <div className="space-y-4">
                                 <div className="space-y-2">
-                                    <label htmlFor="address" className="text-sm font-medium">Address Line 1</label>
+                                    <label htmlFor="address" className="text-sm font-medium">{t('addressLine1')}</label>
                                     <input
                                         id="address"
                                         name="address"
@@ -211,7 +214,7 @@ export default function CheckoutPage() {
                                 </div>
                                 <div className="grid grid-cols-2 gap-4">
                                     <div className="space-y-2">
-                                        <label htmlFor="city" className="text-sm font-medium">City</label>
+                                        <label htmlFor="city" className="text-sm font-medium">{t('city')}</label>
                                         <input
                                             id="city"
                                             name="city"
@@ -221,7 +224,7 @@ export default function CheckoutPage() {
                                         />
                                     </div>
                                     <div className="space-y-2">
-                                        <label htmlFor="postcode" className="text-sm font-medium">Postcode</label>
+                                        <label htmlFor="postcode" className="text-sm font-medium">{t('postcode')}</label>
                                         <input
                                             id="postcode"
                                             name="postcode"
@@ -239,7 +242,7 @@ export default function CheckoutPage() {
                 {/* Order Summary & Payment Button */}
                 <div className="lg:col-span-5">
                     <div className="bg-slate-50 border rounded-2xl p-6 sticky top-24 space-y-6">
-                        <h2 className="text-xl font-bold">Order Summary</h2>
+                        <h2 className="text-xl font-bold">{t('orderSummary')}</h2>
 
                         <div className="space-y-3 max-h-60 overflow-y-auto pr-2">
                             {items.map((item) => (
@@ -257,7 +260,7 @@ export default function CheckoutPage() {
                         </div>
 
                         <div className="border-t border-slate-200 pt-4 flex justify-between items-center">
-                            <span className="font-bold text-lg">Total</span>
+                            <span className="font-bold text-lg">{t('total')}</span>
                             <span className="font-bold text-2xl text-blue-600">{formatPrice(cartTotal, items[0]?.currency || 'USD')}</span>
                         </div>
 
@@ -273,12 +276,12 @@ export default function CheckoutPage() {
                             disabled={isSubmitting}
                             className="w-full flex items-center justify-center py-4 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 active:scale-95 transition-all shadow-lg shadow-blue-200 disabled:opacity-70 disabled:cursor-not-allowed"
                         >
-                            {isSubmitting ? <Loader2 className="animate-spin w-5 h-5" /> : "Proceed to Payment"}
+                            {isSubmitting ? <Loader2 className="animate-spin w-5 h-5" /> : t('proceedPayment')}
                         </button>
 
                         <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground">
                             <Lock className="w-3 h-3" />
-                            Secure Encryption
+                            {t('secureEncryption')}
                         </div>
                     </div>
                 </div>

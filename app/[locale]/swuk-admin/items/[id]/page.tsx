@@ -1,7 +1,7 @@
 "use client";
 
 import { createClient } from "@/lib/supabase/client";
-import { useRouter } from "next/navigation";
+import { useRouter, useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Loader2, Plus, Trash } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -27,20 +27,27 @@ interface Item {
     internal_notes?: string;
 }
 
-export default function EditItemPage({ params }: { params: Promise<{ id: string }> }) {
+export default function EditItemPage() {
+    const params = useParams();
+    const id = params?.id as string;
+
+    // Create client inside component for Client Components
+    const supabase = createClient();
+
     const router = useRouter();
+    // Restore fetching state
+    const [fetching, setFetching] = useState(true);
     const [loading, setLoading] = useState(false);
     const [item, setItem] = useState<Item | null>(null);
-    const [fetching, setFetching] = useState(true);
 
     // Dynamic fields state
     const [imageUrls, setImageUrls] = useState<string[]>([""]);
     const [colorInput, setColorInput] = useState("");
 
     useEffect(() => {
+        if (!id) return;
+
         async function fetchItem() {
-            const { id } = await params;
-            const supabase = createClient();
             const { data, error } = await supabase
                 .from("items")
                 .select("*")
@@ -65,7 +72,7 @@ export default function EditItemPage({ params }: { params: Promise<{ id: string 
             setFetching(false);
         }
         fetchItem();
-    }, [params]);
+    }, [id]); // Depend on id, supabase client is stable or we can ignore it
 
     const addImageField = () => setImageUrls([...imageUrls, ""]);
     const removeImageField = (index: number) => {

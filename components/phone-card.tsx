@@ -1,9 +1,11 @@
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import { cn, formatPrice } from "@/lib/utils";
 import { Phone } from "@/lib/types";
 import { Badge } from "@/components/ui/badge";
+import { useTranslations } from "next-intl";
 
 export function PhoneCard({ phone, currency }: { phone: Phone, currency?: string }) {
+    const t = useTranslations("Common");
     const isAvailable = phone.availability_status === 'in_stock';
     const displayCurrency = currency || phone.currency;
 
@@ -28,7 +30,7 @@ export function PhoneCard({ phone, currency }: { phone: Phone, currency?: string
                         />
                     ) : (
                         <div className="w-full h-full flex items-center justify-center text-muted-foreground bg-secondary/30">
-                            <span className="text-sm">No Image</span>
+                            <span className="text-sm">{t('noImage')}</span>
                         </div>
                     )}
 

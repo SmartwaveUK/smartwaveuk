@@ -6,10 +6,12 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useTranslations } from "next-intl";
 
 export function FilterSidebar() {
     const router = useRouter();
     const searchParams = useSearchParams();
+    const t = useTranslations("Shop");
 
     // Initial state from URL
     const [priceRange, setPriceRange] = useState({
@@ -117,23 +119,23 @@ export function FilterSidebar() {
     return (
         <div className="space-y-8 w-64 shrink-0 hidden lg:block pr-6 border-r h-[calc(100vh-6rem)] sticky top-24 overflow-y-auto custom-scrollbar">
             <div>
-                <h3 className="font-semibold mb-4 text-lg">Filters</h3>
+                <h3 className="font-semibold mb-4 text-lg">{t('filters')}</h3>
                 <Button
                     variant="ghost"
                     className="text-muted-foreground h-auto p-0 hover:text-foreground text-sm"
                     onClick={() => router.push('/shop')}
                 >
-                    Clear All
+                    {t('clearAll')}
                 </Button>
             </div>
 
             {/* Price Range */}
             <div className="space-y-4">
-                <h4 className="font-medium text-sm">Price Range</h4>
+                <h4 className="font-medium text-sm">{t('priceRange')}</h4>
                 <div className="flex items-center gap-2">
                     <Input
                         type="number"
-                        placeholder="Min"
+                        placeholder={t('min')}
                         value={priceRange.min}
                         onChange={(e) => setPriceRange({ ...priceRange, min: e.target.value })}
                         className="h-9"
@@ -141,20 +143,20 @@ export function FilterSidebar() {
                     <span className="text-muted-foreground">-</span>
                     <Input
                         type="number"
-                        placeholder="Max"
+                        placeholder={t('max')}
                         value={priceRange.max}
                         onChange={(e) => setPriceRange({ ...priceRange, max: e.target.value })}
                         className="h-9"
                     />
                 </div>
                 <Button variant="outline" size="sm" className="w-full" onClick={handlePriceApply}>
-                    Apply Price
+                    {t('applyPrice')}
                 </Button>
             </div>
 
             {/* Brands */}
             <div className="space-y-4">
-                <h4 className="font-medium text-sm">Brands</h4>
+                <h4 className="font-medium text-sm">{t('brands')}</h4>
                 <div className="space-y-3">
                     {brands.map((brand) => (
                         <div key={brand} className="flex items-center space-x-2">
@@ -176,7 +178,7 @@ export function FilterSidebar() {
 
             {/* Condition */}
             <div className="space-y-4">
-                <h4 className="font-medium text-sm">Condition</h4>
+                <h4 className="font-medium text-sm">{t('condition')}</h4>
                 <div className="space-y-3">
                     {conditions.map((condition) => (
                         <div key={condition} className="flex items-center space-x-2">
@@ -189,7 +191,7 @@ export function FilterSidebar() {
                                 htmlFor={`condition-${condition}`}
                                 className="text-sm font-normal cursor-pointer text-muted-foreground peer-data-[state=checked]:text-foreground peer-data-[state=checked]:font-medium"
                             >
-                                {condition}
+                                {t(`conditions.${condition.toLowerCase()}`)}
                             </Label>
                         </div>
                     ))}
@@ -198,7 +200,7 @@ export function FilterSidebar() {
 
             {/* Availability */}
             <div className="space-y-4">
-                <h4 className="font-medium text-sm">Availability</h4>
+                <h4 className="font-medium text-sm">{t('availability')}</h4>
                 <div className="flex items-center space-x-2">
                     <Checkbox
                         id="in-stock"
@@ -206,7 +208,7 @@ export function FilterSidebar() {
                         onCheckedChange={(c) => toggleAvailability(c as boolean)}
                     />
                     <Label htmlFor="in-stock" className="text-sm font-normal cursor-pointer">
-                        In Stock Only
+                        {t('inStockOnly')}
                     </Label>
                 </div>
             </div>

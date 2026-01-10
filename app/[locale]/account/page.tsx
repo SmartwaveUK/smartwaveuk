@@ -4,9 +4,12 @@ import { formatPrice } from "@/lib/utils";
 import Link from "next/link";
 import { Package, User, LogOut, ChevronRight } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
+import { getTranslations } from "next-intl/server";
 
 export default async function AccountPage() {
     const data = await getUserAccountData();
+    const t = await getTranslations("Account");
+    const tCheckout = await getTranslations("Checkout"); // Reusing bank details keys
 
     if (!data) {
         redirect("/auth/login?next=/account");
@@ -25,7 +28,7 @@ export default async function AccountPage() {
 
     return (
         <div className="container mx-auto px-4 py-10 md:py-16 pb-32">
-            <h1 className="text-3xl font-bold mb-8">My Account</h1>
+            <h1 className="text-3xl font-bold mb-8">{t('title')}</h1>
 
             <div className="grid md:grid-cols-12 gap-10">
                 {/* Sidebar / Profile Summary */}
@@ -36,7 +39,7 @@ export default async function AccountPage() {
                                 {profile?.full_name ? profile.full_name[0].toUpperCase() : (user.email ? user.email[0].toUpperCase() : 'U')}
                             </div>
                             <div className="overflow-hidden">
-                                <h2 className="font-bold text-lg truncate">{profile?.full_name || 'Valued Customer'}</h2>
+                                <h2 className="font-bold text-lg truncate">{profile?.full_name || t('valuedCustomer')}</h2>
                                 <p className="text-sm text-muted-foreground truncate">{user.email}</p>
                             </div>
                         </div>
@@ -44,7 +47,7 @@ export default async function AccountPage() {
                         <div className="space-y-2">
                             <div className="flex items-center gap-2 p-2 rounded-lg bg-slate-50 text-sm font-medium text-slate-700">
                                 <User className="w-4 h-4" />
-                                Profile
+                                {t('profile')}
                             </div>
                             {/* Placeholder for future links */}
                             {/* <div className="flex items-center gap-2 p-2 rounded-lg hover:bg-slate-50 text-sm font-medium text-muted-foreground cursor-pointer transition-colors">
@@ -57,7 +60,7 @@ export default async function AccountPage() {
                             <form action={signOut}>
                                 <button className="flex items-center gap-2 text-sm font-medium text-red-600 hover:text-red-700 transition-colors w-full">
                                     <LogOut className="w-4 h-4" />
-                                    Sign Out
+                                    {t('signOut')}
                                 </button>
                             </form>
                         </div>
@@ -70,15 +73,15 @@ export default async function AccountPage() {
                     <div className="space-y-6">
                         <h2 className="text-xl font-bold flex items-center gap-2">
                             <Package className="w-5 h-5 text-blue-600" />
-                            Order History
+                            {t('orderHistory')}
                         </h2>
 
                         {orders.length === 0 ? (
                             <div className="bg-slate-50 border rounded-2xl p-10 text-center">
-                                <h3 className="font-semibold text-lg mb-2">No orders yet</h3>
-                                <p className="text-muted-foreground mb-6">Start exploring our collection to find your next gadgets.</p>
+                                <h3 className="font-semibold text-lg mb-2">{t('noOrders')}</h3>
+                                <p className="text-muted-foreground mb-6">{t('startExploring')}</p>
                                 <Link href="/" className="inline-flex items-center justify-center px-6 py-2.5 bg-blue-600 text-white font-medium rounded-xl hover:bg-blue-700 transition-colors">
-                                    Browse Items
+                                    {t('browseItems')}
                                 </Link>
                             </div>
                         ) : (
@@ -87,7 +90,7 @@ export default async function AccountPage() {
                                     <div key={order.id} className="bg-white border rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
                                         <div className="flex flex-wrap items-start justify-between gap-4 mb-4 border-b border-dashed pb-4">
                                             <div>
-                                                <p className="text-sm text-muted-foreground">Order <span className="font-mono text-xs">{order.id.slice(0, 8)}</span></p>
+                                                <p className="text-sm text-muted-foreground">{t('order')} <span className="font-mono text-xs">{order.id.slice(0, 8)}</span></p>
                                                 <p className="text-xs text-slate-400">{new Date(order.created_at).toLocaleDateString()} at {new Date(order.created_at).toLocaleTimeString()}</p>
                                             </div>
                                             <div className="text-right">
@@ -97,7 +100,8 @@ export default async function AccountPage() {
                                                         order.status === 'pending' ? 'bg-amber-100 text-amber-800' :
                                                             order.status === 'shipped' ? 'bg-blue-100 text-blue-800' :
                                                                 'bg-slate-100 text-slate-800'}`}>
-                                                    {order.status.replace('_', ' ')}
+                                                    {/* @ts-ignore */}
+                                                    {t(`status.${order.status}`) || order.status.replace('_', ' ')}
                                                 </span>
                                             </div>
                                         </div>
@@ -105,19 +109,19 @@ export default async function AccountPage() {
                                         {/* Bank Details for Pending Orders */}
                                         {order.status === 'pending' && (
                                             <div className="mb-6 bg-amber-50 border border-amber-100 rounded-xl p-4 text-sm">
-                                                <h4 className="font-semibold text-amber-900 mb-2">Payment Required</h4>
-                                                <p className="text-amber-800 mb-3">Please make a bank transfer to complete your order:</p>
+                                                <h4 className="font-semibold text-amber-900 mb-2">{t('paymentRequired')}</h4>
+                                                <p className="text-amber-800 mb-3">{t('makeTransfer')}</p>
                                                 <div className="grid grid-cols-3 gap-2 text-slate-700 max-w-sm">
-                                                    <span className="text-slate-500">Bank:</span>
-                                                    <span className="col-span-2 font-medium">PhoneBox UK Ltd</span>
+                                                    <span className="text-slate-500">{tCheckout('bank')}</span>
+                                                    <span className="col-span-2 font-medium">Smart Wave UK</span>
 
-                                                    <span className="text-slate-500">Sort Code:</span>
+                                                    <span className="text-slate-500">{tCheckout('sortCode')}</span>
                                                     <span className="col-span-2 font-mono">00-11-22</span>
 
-                                                    <span className="text-slate-500">Account:</span>
+                                                    <span className="text-slate-500">{tCheckout('accountNumber')}</span>
                                                     <span className="col-span-2 font-mono">12345678</span>
 
-                                                    <span className="text-slate-500">Reference:</span>
+                                                    <span className="text-slate-500">{tCheckout('reference')}</span>
                                                     <span className="col-span-2 font-mono break-all">ORDER-{order.id.slice(0, 8).toUpperCase()}</span>
                                                 </div>
                                             </div>
@@ -134,7 +138,7 @@ export default async function AccountPage() {
                                                         )}
                                                     </div>
                                                     <div className="flex-1">
-                                                        <p className="font-medium text-sm">{orderItem.item?.model || 'Unknown Device'}</p>
+                                                        <p className="font-medium text-sm">{orderItem.item?.model || t('unknownDevice')}</p>
                                                         <p className="text-xs text-muted-foreground">{orderItem.item?.brand}</p>
                                                         {orderItem.selected_options && (orderItem.selected_options.color || orderItem.selected_options.storage) && (
                                                             <div className="flex gap-2 mt-1">

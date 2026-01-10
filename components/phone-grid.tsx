@@ -1,5 +1,6 @@
 import { Phone } from "@/lib/types";
 import { PhoneCard } from "./phone-card";
+import { useTranslations } from "next-intl";
 
 export function PhoneGrid({ phones, currency, mobileLayout = 'grid', mobileColumns = 2 }: {
     phones: Phone[],
@@ -7,11 +8,13 @@ export function PhoneGrid({ phones, currency, mobileLayout = 'grid', mobileColum
     mobileLayout?: 'grid' | 'slider',
     mobileColumns?: 1 | 2
 }) {
+    const t = useTranslations("Common");
+
     if (!phones || phones.length === 0) {
         return (
             <div className="text-center py-20">
-                <h3 className="text-lg font-medium">No items available at the moment.</h3>
-                <p className="text-muted-foreground">Check back later for new listings.</p>
+                <h3 className="text-lg font-medium">{t('noItems')}</h3>
+                <p className="text-muted-foreground">{t('checkBack')}</p>
             </div>
         );
     }

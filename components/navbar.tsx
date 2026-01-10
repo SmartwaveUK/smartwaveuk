@@ -1,11 +1,13 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import { Search, ShoppingBag, User } from "lucide-react";
-import { useSearchParams, usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter } from "@/i18n/routing";
+import { useSearchParams } from "next/navigation";
 import { HugeiconsIcon } from '@hugeicons/react';
 import { ShoppingBasket03Icon, UserIcon } from '@hugeicons/core-free-icons';
 import { useCart } from "@/components/providers/cart-provider";
+import { useTranslations } from "next-intl";
 
 
 export function Navbar() {
@@ -13,6 +15,7 @@ export function Navbar() {
     const pathname = usePathname();
     const { replace } = useRouter();
     const { itemCount } = useCart();
+    const t = useTranslations("StoreDashboard");
 
     return (
         <header className="hidden md:block sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur-md">
@@ -47,7 +50,7 @@ export function Navbar() {
                     <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                     <input
                         type="search"
-                        placeholder="Search gadgets..."
+                        placeholder={t('searchPlaceholder')}
                         defaultValue={searchParams.get("q") || ""}
                         onChange={(e) => {
                             const term = e.target.value;
