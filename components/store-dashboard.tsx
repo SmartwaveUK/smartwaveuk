@@ -163,7 +163,7 @@ export function StoreDashboard({
                             >
                                 <h3 className="font-bold text-lg shrink-0" style={{ background: 'linear-gradient(to left, #90adecff, #f79a69ff)', color: 'white', padding: '5px 10px', borderRadius: '30px' }}>{t('newItems')}</h3>
                                 <div className="h-px bg-white/50 flex-1 mx-2" />
-                                <Link href="/shop" className="bg-white px-2 py-1 rounded-full border border-blue-600 text-xs font-semibold text-blue-600 hover:text-white hover:bg-blue-600 hover:border-blue-600 shrink-0" style={{ border: '0.5px solid blue' }}>{t('seeAll')}</Link>
+                                {/* <Link href="/shop" className="bg-white px-2 py-1 rounded-full border border-blue-600 text-xs font-semibold text-blue-600 hover:text-white hover:bg-blue-600 hover:border-blue-600 shrink-0" style={{ border: '0.5px solid blue' }}>{t('seeAll')}</Link> */}
                             </div>
                             <PhoneGrid phones={initialPhones.filter(p => p.condition.toLowerCase() === 'new')} currency={currency} mobileColumns={1} />
                         </section>
