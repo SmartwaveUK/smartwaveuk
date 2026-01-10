@@ -126,8 +126,8 @@ export default function CheckoutPage() {
                     </div>
 
                     <div className="pt-4">
-                        <Link href="/" className="inline-flex items-center justify-center px-8 py-3 bg-slate-900 text-white font-medium rounded-xl hover:bg-slate-800 transition-colors">
-                            Return to Home
+                        <Link href="/account" className="inline-flex items-center justify-center px-8 py-3 bg-slate-900 text-white font-medium rounded-xl hover:bg-slate-800 transition-colors">
+                            Go to My Orders
                         </Link>
                     </div>
                 </div>

@@ -102,6 +102,27 @@ export default async function AccountPage() {
                                             </div>
                                         </div>
 
+                                        {/* Bank Details for Pending Orders */}
+                                        {order.status === 'pending' && (
+                                            <div className="mb-6 bg-amber-50 border border-amber-100 rounded-xl p-4 text-sm">
+                                                <h4 className="font-semibold text-amber-900 mb-2">Payment Required</h4>
+                                                <p className="text-amber-800 mb-3">Please make a bank transfer to complete your order:</p>
+                                                <div className="grid grid-cols-3 gap-2 text-slate-700 max-w-sm">
+                                                    <span className="text-slate-500">Bank:</span>
+                                                    <span className="col-span-2 font-medium">PhoneBox UK Ltd</span>
+
+                                                    <span className="text-slate-500">Sort Code:</span>
+                                                    <span className="col-span-2 font-mono">00-11-22</span>
+
+                                                    <span className="text-slate-500">Account:</span>
+                                                    <span className="col-span-2 font-mono">12345678</span>
+
+                                                    <span className="text-slate-500">Reference:</span>
+                                                    <span className="col-span-2 font-mono break-all">ORDER-{order.id.slice(0, 8).toUpperCase()}</span>
+                                                </div>
+                                            </div>
+                                        )}
+
                                         <div className="space-y-3">
                                             {order.items.map((orderItem: any) => (
                                                 <div key={orderItem.id} className="flex gap-4">
