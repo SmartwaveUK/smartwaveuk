@@ -110,14 +110,16 @@ export default function CheckoutPage() {
                         <div className="space-y-3 text-sm text-slate-700">
                             <p>{t('makeTransfer')}</p>
                             <div className="grid grid-cols-3 gap-2 py-2">
-                                <span className="text-slate-500">{t('bank')}</span>
-                                <span className="col-span-2 font-medium">Smart Wave UK</span>
+                                <span className="text-slate-500">{t('accountName')}</span>
+                                <span className="col-span-2 font-medium">Jan Moliński</span>
 
-                                <span className="text-slate-500">{t('sortCode')}</span>
-                                <span className="col-span-2 font-mono">00-11-22</span>
+                                <span className="text-slate-500">{t('bank')}</span>
+                                <span className="col-span-2 font-medium">Millennium Bank</span>
+
+
 
                                 <span className="text-slate-500">{t('accountNumber')}</span>
-                                <span className="col-span-2 font-mono">12345678</span>
+                                <span className="col-span-2 font-mono">PL32 1160 2202 0000 0006 3080 0055</span>
 
                                 <span className="text-slate-500">{t('reference')}</span>
                                 <span className="col-span-2 font-mono">ORDER-{new Date().getTime().toString().slice(-6)}</span>

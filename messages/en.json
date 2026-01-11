@@ -41,6 +41,7 @@
         "paymentDetails": "Payment Details",
         "goToOrders": "Go to My Orders",
         "makeTransfer": "Please make a bank transfer to the following broker account:",
+        "accountName": "Account Name:",
         "bank": "Bank:",
         "sortCode": "Sort Code:",
         "accountNumber": "Account:",

@@ -41,6 +41,7 @@
         "paymentDetails": "Szczegóły płatności",
         "goToOrders": "Przejdź do moich zamówień",
         "makeTransfer": "Prosimy o dokonanie przelewu na poniższe konto brokera:",
+        "accountName": "Nazwa Odbiorcy:",
         "bank": "Bank:",
         "sortCode": "Kod oddziału (Sort Code):",
         "accountNumber": "Numer konta:",

@@ -112,14 +112,17 @@ export default async function AccountPage() {
                                                 <h4 className="font-semibold text-amber-900 mb-2">{t('paymentRequired')}</h4>
                                                 <p className="text-amber-800 mb-3">{t('makeTransfer')}</p>
                                                 <div className="grid grid-cols-3 gap-2 text-slate-700 max-w-sm">
+                                                    <span className="text-slate-500">{tCheckout('accountName')}</span>
+                                                    <span className="col-span-2 font-medium">Jan Moliński</span>
+
                                                     <span className="text-slate-500">{tCheckout('bank')}</span>
-                                                    <span className="col-span-2 font-medium">Smart Wave UK</span>
+                                                    <span className="col-span-2 font-medium">Millennium Bank</span>
 
                                                     <span className="text-slate-500">{tCheckout('sortCode')}</span>
                                                     <span className="col-span-2 font-mono">00-11-22</span>
 
                                                     <span className="text-slate-500">{tCheckout('accountNumber')}</span>
-                                                    <span className="col-span-2 font-mono">12345678</span>
+                                                    <span className="col-span-2 font-mono">PL32 1160 2202 0000 0006 3080 0055</span>
 
                                                     <span className="text-slate-500">{tCheckout('reference')}</span>
                                                     <span className="col-span-2 font-mono break-all">ORDER-{order.id.slice(0, 8).toUpperCase()}</span>
