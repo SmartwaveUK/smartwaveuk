@@ -11,8 +11,11 @@ export function BottomNav() {
     const pathname = usePathname();
     const t = useTranslations('Navigation');
 
-    // Hide on admin routes
+    // Hide on admin routes and product detail pages (where we have a sticky add-to-cart bar)
     if (pathname.startsWith("/swuk-admin")) return null;
+    // Check if we are on a product page (e.g. /phones/123), taking care not to match if it was just /phones (though that doesn't exist as a list page, list is /shop)
+    // The route is /phones/[id]
+    if (pathname.includes("/phones/")) return null;
 
     const navItems = [
         { icon: Home, label: t('home'), href: "/" },
