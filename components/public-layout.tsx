@@ -4,6 +4,7 @@ import { usePathname } from "@/i18n/routing";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { BottomNav } from "@/components/bottom-nav";
+import { WhatsAppButton } from "@/components/whatsapp-button";
 import { Suspense } from "react";
 
 export function PublicLayout({ children }: { children: React.ReactNode }) {
@@ -27,6 +28,7 @@ export function PublicLayout({ children }: { children: React.ReactNode }) {
                 <BottomNav />
             </Suspense>
             <Footer />
+            <WhatsAppButton />
         </>
     );
 }
