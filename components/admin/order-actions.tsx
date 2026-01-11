@@ -1,11 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { Loader2, Truck, Check } from "lucide-react";
+import { Loader2, Truck } from "lucide-react";
 import { processOrder } from "@/lib/admin-actions";
 import { Button } from "@/components/ui/button";
+import { TrackingManager } from "@/components/admin/tracking-manager";
 
-export function OrderActions({ orderId, status }: { orderId: string, status: string }) {
+export function OrderActions({ orderId, status, trackingNumber }: { orderId: string, status: string, trackingNumber?: string | null }) {
     const [isLoading, setIsLoading] = useState(false);
 
     const handleProcess = async () => {
@@ -17,12 +18,8 @@ export function OrderActions({ orderId, status }: { orderId: string, status: str
         window.location.reload();
     };
 
-    if (status === 'processing' || status === 'shipped') {
-        return (
-            <span className="text-xs text-green-600 font-medium flex items-center justify-end gap-1">
-                <Check className="w-3 h-3" /> Tracking Active
-            </span>
-        );
+    if (trackingNumber) {
+        return <TrackingManager trackingNumber={trackingNumber} />;
     }
 
     if (status === 'cancelled') return null;

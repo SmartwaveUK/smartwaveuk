@@ -21,7 +21,8 @@ export default async function AdminOrdersPage({
         .from("orders")
         .select(`
             *,
-            items: order_items (count)
+            items: order_items (count),
+            tracking: tracking_shipments(tracking_number)
         `)
         .order("created_at", { ascending: false });
 
@@ -102,7 +103,8 @@ export default async function AdminOrdersPage({
                                         <td className="p-4 align-middle text-right">
                                             {/* We can link to a detail page later if needed, for now just placeholder or maybe nothing as user just asked to display users */}
                                             {/* Assuming detail view will be requested next, but for now just row display */}
-                                            <OrderActions orderId={order.id} status={order.status} />
+                                            {/* @ts-ignore */}
+                                            <OrderActions orderId={order.id} status={order.status} trackingNumber={order.tracking?.[0]?.tracking_number || null} />
                                         </td>
                                     </tr>
                                 ))
