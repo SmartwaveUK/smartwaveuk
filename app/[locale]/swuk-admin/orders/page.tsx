@@ -4,6 +4,7 @@ import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
+import { OrderActions } from "@/components/admin/order-actions";
 
 export const dynamic = "force-dynamic";
 
@@ -101,7 +102,7 @@ export default async function AdminOrdersPage({
                                         <td className="p-4 align-middle text-right">
                                             {/* We can link to a detail page later if needed, for now just placeholder or maybe nothing as user just asked to display users */}
                                             {/* Assuming detail view will be requested next, but for now just row display */}
-                                            <span className="text-muted-foreground text-xs">View</span>
+                                            <OrderActions orderId={order.id} status={order.status} />
                                         </td>
                                     </tr>
                                 ))
