@@ -330,24 +330,24 @@
             "changes": {
                 "title": "6. Zmiany warunków",
                 "content": "Zastrzegamy sobie prawo do zmiany niniejszych Warunków korzystania z usługi w dowolnym momencie. Dalsze korzystanie ze strony internetowej po wprowadzeniu jakichkolwiek zmian oznacza akceptację nowych warunków."
-            },
-            "Tracking": {
-                "title": "Śledź swoje zamówienie",
-                "subtitle": "Wpisz numer przesyłki, aby sprawdzić status.",
-                "placeholder": "np. SW-12345678",
-                "searchButton": "Szukaj",
-                "notFound": "Nie znaleziono numeru przesyłki. Sprawdź i spróbuj ponownie.",
-                "shipmentStatus": "Status przesyłki",
-                "trackingId": "Numer śledzenia:",
-                "backToHome": "Wróć do strony głównej",
-                "status": {
-                    "created": "Utworzono",
-                    "processing": "Przetwarzanie",
-                    "picked_up": "Odebrano",
-                    "in_transit": "W drodze",
-                    "delivered": "Dostarczono"
-                }
             }
+        }
+    },
+    "Tracking": {
+        "title": "Śledź swoje zamówienie",
+        "subtitle": "Wpisz numer przesyłki, aby sprawdzić status.",
+        "placeholder": "np. SW-12345678",
+        "searchButton": "Szukaj",
+        "notFound": "Nie znaleziono numeru przesyłki. Sprawdź i spróbuj ponownie.",
+        "shipmentStatus": "Status przesyłki",
+        "trackingId": "Numer śledzenia:",
+        "backToHome": "Wróć do strony głównej",
+        "status": {
+            "created": "Utworzono",
+            "processing": "Przetwarzanie",
+            "picked_up": "Odebrano",
+            "in_transit": "W drodze",
+            "delivered": "Dostarczono"
         }
     }
 }

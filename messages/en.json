@@ -330,24 +330,24 @@
             "changes": {
                 "title": "6. Changes to Terms",
                 "content": "We reserve the right to modify these Terms of Service at any time. Your continued use of the website following any changes indicates your acceptance of the new terms."
-            },
-            "Tracking": {
-                "title": "Track Your Order",
-                "subtitle": "Enter your tracking number to get real-time updates.",
-                "placeholder": "e.g. SW-12345678",
-                "searchButton": "Track",
-                "notFound": "Tracking number not found. Please check and try again.",
-                "shipmentStatus": "Shipment Status",
-                "trackingId": "Tracking ID:",
-                "backToHome": "Back to Home",
-                "status": {
-                    "created": "Created",
-                    "processing": "Processing",
-                    "picked_up": "Picked Up",
-                    "in_transit": "In Transit",
-                    "delivered": "Delivered"
-                }
             }
+        }
+    },
+    "Tracking": {
+        "title": "Track Your Order",
+        "subtitle": "Enter your tracking number to get real-time updates.",
+        "placeholder": "e.g. SW-12345678",
+        "searchButton": "Track",
+        "notFound": "Tracking number not found. Please check and try again.",
+        "shipmentStatus": "Shipment Status",
+        "trackingId": "Tracking ID:",
+        "backToHome": "Back to Home",
+        "status": {
+            "created": "Created",
+            "processing": "Processing",
+            "picked_up": "Picked Up",
+            "in_transit": "In Transit",
+            "delivered": "Delivered"
         }
     }
 }
