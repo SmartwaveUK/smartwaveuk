@@ -10,8 +10,11 @@ export function PaymentUploadForm({ orderId }: { orderId: string }) {
     const [uploadSuccess, setUploadSuccess] = useState(false);
     const t = useTranslations("Checkout");
 
-    async function handleUpload(formData: FormData) {
+    async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+        event.preventDefault();
         setIsUploading(true);
+
+        const formData = new FormData(event.currentTarget);
         // Append orderId because bind might be tricky with client component
         const result = await confirmPayment(orderId, formData);
         setIsUploading(false);
@@ -33,7 +36,7 @@ export function PaymentUploadForm({ orderId }: { orderId: string }) {
     }
 
     return (
-        <form action={handleUpload} className="flex flex-col sm:flex-row gap-3">
+        <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
             <input type="hidden" name="orderId" value={orderId} />
             <div className="relative flex-1">
                 <input
