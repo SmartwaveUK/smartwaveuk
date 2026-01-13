@@ -99,6 +99,42 @@ export async function sendTrackingEmail(email: string, trackingNumber: string) {
     }
 }
 
+export async function sendTrackingUpdateEmail(email: string, trackingNumber: string, event: { status: string, location: string, description: string }) {
+    try {
+        const { data, error } = await resend.emails.send({
+            from: 'SmartWave UK <orders@smartwaveuk.com>',
+            to: [email],
+            subject: `Shipment Update: ${event.status.replace('_', ' ').toUpperCase()} (Tracking: ${trackingNumber})`,
+            html: `
+                <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
+                    <h1 style="color: #2563eb;">Shipping Update</h1>
+                    <p>There has been a new update on your shipment.</p>
+                    
+                    <div style="background-color: #f8fafc; padding: 20px; border-radius: 12px; margin: 24px 0;">
+                        <p style="font-weight: bold; font-size: 1.1em; margin-bottom: 4px;">${event.status.replace('_', ' ').toUpperCase()}</p>
+                        <p style="color: #64748b; margin: 0;">${event.description}</p>
+                        <p style="color: #94a3b8; font-size: 0.9em; margin-top: 8px;">Location: ${event.location}</p>
+                    </div>
+
+                    <p style="text-align: center;">
+                        <a href="https://smartwaveuk.com/track-order?tracking_number=${trackingNumber}" style="background-color: #2563eb; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: bold; display: inline-block;">Track Shipment</a>
+                    </p>
+                </div>
+            `
+        });
+
+        if (error) {
+            console.error("Resend Error:", error);
+            return;
+        }
+
+        console.log("Update Email sent successfully:", data?.id);
+
+    } catch (e) {
+        console.error("Failed to send update email:", e);
+    }
+}
+
 export async function getTrackingInfo(trackingNumber: string) {
     const supabase = await createClient();
 

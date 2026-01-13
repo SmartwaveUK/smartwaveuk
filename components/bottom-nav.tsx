@@ -15,7 +15,7 @@ export function BottomNav() {
     if (pathname.startsWith("/swuk-admin")) return null;
     // Check if we are on a product page (e.g. /phones/123), taking care not to match if it was just /phones (though that doesn't exist as a list page, list is /shop)
     // The route is /phones/[id]
-    if (pathname.includes("/phones/")) return null;
+    if (pathname.includes("/phones/") || pathname === "/cart" || pathname === "/checkout") return null;
 
     const navItems = [
         { icon: Home, label: t('home'), href: "/" },

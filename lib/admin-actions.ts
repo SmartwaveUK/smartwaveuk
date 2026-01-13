@@ -1,7 +1,5 @@
-"use server";
-
 import { createClient } from "@/lib/supabase/server";
-import { createShipment } from "@/lib/tracking";
+import { createShipment, sendTrackingUpdateEmail } from "@/lib/tracking";
 import { revalidatePath } from "next/cache";
 
 export async function processOrder(orderId: string) {
@@ -57,6 +55,19 @@ export async function addTrackingEvent(trackingNumber: string, event: { status: 
     if (error) {
         console.error("Error adding event:", error);
         return { error: "Failed to add event" };
+    }
+
+    // Send Email Notification
+    // We need to fetch the order email. We can join tables but for simplicity let's just get the order_id from shipment then email from order.
+    // Or assume we fetched it with the shipment if we change the query.
+    // Let's do a quick lookup.
+    const { data: shipmentData } = await supabase.from("tracking_shipments").select("order_id").eq("tracking_number", trackingNumber).single();
+
+    if (shipmentData?.order_id) {
+        const { data: order } = await supabase.from("orders").select("customer_email").eq("id", shipmentData.order_id).single();
+        if (order?.customer_email) {
+            await sendTrackingUpdateEmail(order.customer_email, trackingNumber, event);
+        }
     }
 
     revalidatePath("/swuk-admin/orders");
