@@ -139,7 +139,7 @@ export async function sendNewOrderAdminEmail(order: any) {
     try {
         const { data, error } = await resend.emails.send({
             from: 'SmartWave UK <orders@smartwaveuk.com>',
-            to: ['smartwaveuk@gmail.com'],
+            to: ['swaveuk@gmail.com'],
             subject: `New Order Received! (${order.id.slice(0, 8)})`,
             html: `
                 <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
