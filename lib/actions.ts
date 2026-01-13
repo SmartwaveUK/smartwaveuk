@@ -168,5 +168,75 @@ export async function handleCheckoutOrder(formData: FormData, cartItems: any[]) 
         console.error("Failed to trigger admin email:", e);
     }
 
-    return { success: true, newAccount };
+    return { success: true, newAccount, orderId: order.id };
+}
+
+export async function confirmPayment(orderId: string, formData: FormData) {
+    const supabase = await createClient();
+    const file = formData.get("receipt") as File;
+
+    if (!file || !orderId) {
+        return { error: "Missing file or order ID" };
+    }
+
+    // 1. Upload File
+    const fileExt = file.name.split('.').pop();
+    const fileName = `${orderId}-${Math.random().toString(36).substring(7)}.${fileExt}`;
+    const filePath = `${fileName}`;
+
+    const { error: uploadError } = await supabase.storage
+        .from('payment-proofs')
+        .upload(filePath, file);
+
+    if (uploadError) {
+        console.error("Upload Error:", uploadError);
+        return { error: "Failed to upload receipt" };
+    }
+
+    // 2. Get Public URL (Signed URL if private? We set bucket to private. 
+    //    Actually, for email we need a signed URL or public URL. 
+    //    If bucket is private, we need createSignedUrl. 
+    //    Let's use createSignedUrl with a long expiry for the admin email link.)
+    const { data, error: signedUrlError } = await supabase.storage
+        .from('payment-proofs')
+        .createSignedUrl(filePath, 60 * 60 * 24 * 365); // 1 year access for admin
+
+    if (signedUrlError || !data?.signedUrl) {
+        console.error("Signed URL Error:", signedUrlError);
+        return { error: "Failed to generate receipt URL" };
+    }
+
+    const signedUrl = data.signedUrl;
+
+    // 3. Update Order
+    const { error: updateError } = await supabase
+        .from('orders')
+        .update({
+            payment_proof: filePath, // Store path or URL? Let's store path so we can generate signed urls later if needed, but signedUrl is good for email.
+            // Actually, let's just update a status like 'awaiting_payment_approval' or just keep 'pending' but add proof?
+            // Let's keep 'pending' but valid proof acts as a signal. Or arguably 'awaiting_payment'. 
+            // Schema comment said: 'pending', 'awaiting_payment', 'paid'...
+            // 'pending' usually means "created but no attempt yet". 
+            // Let's set to 'awaiting_verify' if we had that, or just keep it as is. 
+            // The user didn't ask for status change, just confirmation.
+            // Updating a specific 'payment_proof' column is what we did in migration.
+
+        })
+        .eq('id', orderId);
+
+    if (updateError) {
+        console.error("Update Order Error:", updateError);
+        return { error: "Failed to update order with receipt" };
+    }
+
+    // 4. Send Email
+    try {
+        const { sendPaymentConfirmationEmail } = await import("@/lib/tracking");
+        await sendPaymentConfirmationEmail(orderId, signedUrl);
+    } catch (e) {
+        console.error("Failed to trigger payment email:", e);
+    }
+
+    revalidatePath("/account");
+    return { success: true };
 }

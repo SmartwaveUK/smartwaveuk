@@ -172,6 +172,41 @@ export async function sendNewOrderAdminEmail(order: any) {
     }
 }
 
+export async function sendPaymentConfirmationEmail(orderId: string, proofUrl: string) {
+    try {
+        const { data, error } = await resend.emails.send({
+            from: 'SmartWave UK <orders@smartwaveuk.com>',
+            to: ['swaveuk@gmail.com'],
+            subject: `Payment Confirmed! (Order: ${orderId.slice(0, 8)})`,
+            html: `
+                <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
+                    <h1 style="color: #2563eb;">Payment Confirmation Received</h1>
+                    <p>A customer has uploaded a payment receipt for their order.</p>
+                    
+                    <div style="background-color: #f8fafc; padding: 20px; border-radius: 12px; margin: 24px 0;">
+                        <p><strong>Order ID:</strong> ${orderId}</p>
+                        <p><strong>Receipt:</strong> <a href="${proofUrl}" target="_blank">View Receipt</a></p>
+                    </div>
+
+                    <p style="text-align: center;">
+                        <a href="https://smartwaveuk.com/swuk-admin/orders" style="background-color: #2563eb; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: bold; display: inline-block;">Manage Order</a>
+                    </p>
+                </div>
+            `
+        });
+
+        if (error) {
+            console.error("Resend Payment Email Error:", error);
+            return;
+        }
+
+        console.log("Payment Confirmation Email sent successfully:", data?.id);
+
+    } catch (e) {
+        console.error("Failed to send payment confirmation email:", e);
+    }
+}
+
 export async function getTrackingInfo(trackingNumber: string) {
     const supabase = await createClient();
 

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Package, User, LogOut, ChevronRight } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { getTranslations } from "next-intl/server";
+import { PaymentUploadForm } from "@/components/payment-upload-form";
 
 export default async function AccountPage() {
     const data = await getUserAccountData();
@@ -126,6 +127,11 @@ export default async function AccountPage() {
 
                                                     <span className="text-slate-500">{tCheckout('reference')}</span>
                                                     <span className="col-span-2 font-mono break-all">ORDER-{order.id.slice(0, 8).toUpperCase()}</span>
+                                                </div>
+
+                                                <div className="mt-4 pt-4 border-t border-amber-200">
+                                                    <p className="font-semibold text-amber-900 mb-2">{t('confirmPayment')}</p>
+                                                    <PaymentUploadForm orderId={order.id} />
                                                 </div>
                                             </div>
                                         )}

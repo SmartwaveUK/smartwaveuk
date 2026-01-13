@@ -9,13 +9,14 @@ import { useState, useEffect } from "react";
 import { handleCheckoutOrder } from "@/lib/actions";
 import { useRouter } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
+import { PaymentUploadForm } from "@/components/payment-upload-form";
 
 export default function CheckoutPage() {
     const { items, clearCart, cartTotal } = useCart();
     const router = useRouter();
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [error, setError] = useState<string | null>(null);
-    const [successData, setSuccessData] = useState<{ newAccount: boolean, bankDetails: boolean } | null>(null);
+    const [successData, setSuccessData] = useState<{ newAccount: boolean, bankDetails: boolean, orderId: string } | null>(null);
 
     // Form State for pre-filling
     const [name, setName] = useState("");
@@ -66,7 +67,8 @@ export default function CheckoutPage() {
             } else if (result?.success) {
                 setSuccessData({
                     newAccount: result.newAccount || false,
-                    bankDetails: true
+                    bankDetails: true,
+                    orderId: result.orderId // Ensure this is returned from handleCheckoutOrder
                 });
                 clearCart();
             }
@@ -128,15 +130,26 @@ export default function CheckoutPage() {
                                 {t('orderProcessed')}
                             </p>
                         </div>
-                    </div>
-
-                    <div className="pt-4">
-                        <Link href="/account" className="inline-flex items-center justify-center px-8 py-3 bg-slate-900 text-white font-medium rounded-xl hover:bg-slate-800 transition-colors">
-                            {t('goToOrders')}
-                        </Link>
+                        <p className="text-xs text-muted-foreground mt-2">
+                            {t('orderProcessed')}
+                        </p>
                     </div>
                 </div>
+
+                <div className="bg-slate-50 p-6 rounded-xl border border-slate-200 text-left">
+                    <h3 className="font-semibold text-lg mb-4">{t('confirmPayment')}</h3>
+                    <p className="text-sm text-slate-600 mb-4">{t('uploadReceiptDescription')}</p>
+
+                    <PaymentUploadForm orderId={successData.orderId} />
+                </div>
+
+                <div className="pt-4">
+                    <Link href="/account" className="inline-flex items-center justify-center px-8 py-3 bg-slate-900 text-white font-medium rounded-xl hover:bg-slate-800 transition-colors">
+                        {t('goToOrders')}
+                    </Link>
+                </div>
             </div>
+
         );
     }
 
@@ -291,3 +304,5 @@ export default function CheckoutPage() {
         </div>
     );
 }
+
+

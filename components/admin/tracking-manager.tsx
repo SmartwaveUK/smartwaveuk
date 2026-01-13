@@ -51,7 +51,7 @@ export function TrackingManager({ trackingNumber }: { trackingNumber: string }) 
                     Manage Tracking
                 </Button>
             </DialogTrigger>
-            <DialogContent className="sm:max-w-[425px]">
+            <DialogContent className="sm:max-w-[425px] bg-white">
                 <DialogHeader>
                     <DialogTitle>Update Tracking</DialogTitle>
                     <DialogDescription>
