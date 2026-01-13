@@ -33,7 +33,7 @@ export function PaymentUploadForm({ orderId }: { orderId: string }) {
     }
 
     return (
-        <form action={handleUpload} className="flex gap-2">
+        <form action={handleUpload} className="flex flex-col sm:flex-row gap-3">
             <input type="hidden" name="orderId" value={orderId} />
             <div className="relative flex-1">
                 <input
@@ -53,7 +53,7 @@ export function PaymentUploadForm({ orderId }: { orderId: string }) {
             <button
                 type="submit"
                 disabled={isUploading}
-                className="bg-slate-900 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-slate-800 disabled:opacity-50 flex items-center gap-2"
+                className="bg-slate-900 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-slate-800 disabled:opacity-50 flex items-center justify-center gap-2 w-full sm:w-auto"
             >
                 {isUploading ? <Loader2 className="w-4 h-4 animate-spin" /> : <UploadCloud className="w-4 h-4" />}
                 {t('upload')}

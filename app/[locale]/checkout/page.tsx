@@ -177,7 +177,7 @@ export default function CheckoutPage() {
                                         required
                                         value={name}
                                         onChange={(e) => setName(e.target.value)}
-                                        className="flex h-10 w-full rounded-lg border border-input bg-white px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:ring-2 focus:ring-blue-600 outline-none"
+                                        className="flex h-10 w-full rounded-lg border border-input bg-white px-3 py-2 text-base ring-offset-background placeholder:text-muted-foreground focus:ring-2 focus:ring-blue-600 outline-none"
                                         placeholder="John Doe"
                                     />
                                 </div>
@@ -190,7 +190,7 @@ export default function CheckoutPage() {
                                         required
                                         value={email}
                                         onChange={(e) => setEmail(e.target.value)}
-                                        className="flex h-10 w-full rounded-lg border border-input bg-white px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:ring-2 focus:ring-blue-600 outline-none"
+                                        className="flex h-10 w-full rounded-lg border border-input bg-white px-3 py-2 text-base ring-offset-background placeholder:text-muted-foreground focus:ring-2 focus:ring-blue-600 outline-none"
                                         placeholder="john@example.com"
                                     />
                                 </div>
@@ -203,7 +203,7 @@ export default function CheckoutPage() {
                                         required
                                         value={phone}
                                         onChange={(e) => setPhone(e.target.value)}
-                                        className="flex h-10 w-full rounded-lg border border-input bg-white px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:ring-2 focus:ring-blue-600 outline-none"
+                                        className="flex h-10 w-full rounded-lg border border-input bg-white px-3 py-2 text-base ring-offset-background placeholder:text-muted-foreground focus:ring-2 focus:ring-blue-600 outline-none"
                                         placeholder="+1 234 567 8900"
                                     />
                                 </div>
@@ -220,7 +220,7 @@ export default function CheckoutPage() {
                                         id="address"
                                         name="address"
                                         required
-                                        className="flex h-10 w-full rounded-lg border border-input bg-white px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:ring-2 focus:ring-blue-600 outline-none"
+                                        className="flex h-10 w-full rounded-lg border border-input bg-white px-3 py-2 text-base ring-offset-background placeholder:text-muted-foreground focus:ring-2 focus:ring-blue-600 outline-none"
                                         placeholder="123 Main St"
                                     />
                                 </div>
@@ -231,7 +231,7 @@ export default function CheckoutPage() {
                                             id="city"
                                             name="city"
                                             required
-                                            className="flex h-10 w-full rounded-lg border border-input bg-white px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:ring-2 focus:ring-blue-600 outline-none"
+                                            className="flex h-10 w-full rounded-lg border border-input bg-white px-3 py-2 text-base ring-offset-background placeholder:text-muted-foreground focus:ring-2 focus:ring-blue-600 outline-none"
                                             placeholder="London"
                                         />
                                     </div>
@@ -241,7 +241,7 @@ export default function CheckoutPage() {
                                             id="postcode"
                                             name="postcode"
                                             required
-                                            className="flex h-10 w-full rounded-lg border border-input bg-white px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:ring-2 focus:ring-blue-600 outline-none"
+                                            className="flex h-10 w-full rounded-lg border border-input bg-white px-3 py-2 text-base ring-offset-background placeholder:text-muted-foreground focus:ring-2 focus:ring-blue-600 outline-none"
                                             placeholder="SW1A 1AA"
                                         />
                                     </div>
