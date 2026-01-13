@@ -130,6 +130,7 @@ export async function sendTrackingUpdateEmail(email: string, trackingNumber: str
 
         console.log("Update Email sent successfully:", data?.id);
 
+    } catch (e) {
         console.error("Failed to send update email:", e);
     }
 }
