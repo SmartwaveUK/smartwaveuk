@@ -130,8 +130,44 @@ export async function sendTrackingUpdateEmail(email: string, trackingNumber: str
 
         console.log("Update Email sent successfully:", data?.id);
 
-    } catch (e) {
         console.error("Failed to send update email:", e);
+    }
+}
+
+export async function sendNewOrderAdminEmail(order: any) {
+    try {
+        const { data, error } = await resend.emails.send({
+            from: 'SmartWave UK <orders@smartwaveuk.com>',
+            to: ['smartwaveuk@gmail.com'],
+            subject: `New Order Received! (${order.id.slice(0, 8)})`,
+            html: `
+                <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
+                    <h1 style="color: #2563eb;">New Order Received</h1>
+                    <p>A new order has been placed on SmartWave UK.</p>
+                    
+                    <div style="background-color: #f8fafc; padding: 20px; border-radius: 12px; margin: 24px 0;">
+                        <p><strong>Customer:</strong> ${order.customer_name}</p>
+                        <p><strong>Email:</strong> ${order.customer_email}</p>
+                        <p><strong>Phone:</strong> ${order.customer_phone}</p>
+                        <p><strong>Total:</strong> ${new Intl.NumberFormat('en-GB', { style: 'currency', currency: order.currency }).format(order.total_amount)}</p>
+                    </div>
+
+                    <p style="text-align: center;">
+                        <a href="https://smartwaveuk.com/swuk-admin/orders" style="background-color: #2563eb; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: bold; display: inline-block;">View Order in Admin</a>
+                    </p>
+                </div>
+            `
+        });
+
+        if (error) {
+            console.error("Resend Admin Error:", error);
+            return;
+        }
+
+        console.log("Admin New Order Email sent successfully:", data?.id);
+
+    } catch (e) {
+        console.error("Failed to send admin new order email:", e);
     }
 }
 

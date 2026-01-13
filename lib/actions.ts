@@ -155,10 +155,17 @@ export async function handleCheckoutOrder(formData: FormData, cartItems: any[]) 
         .from('order_items')
         .insert(orderItemsRecord);
 
-    if (itemsError) {
-        console.error("Order Items Error:", itemsError);
-        return { error: "Failed to add items to order." };
-    }
+    return { error: "Failed to add items to order." };
+}
 
-    return { success: true, newAccount };
+// Send Admin Notification asynchronously
+// (We don't await this to keep the user experience fast, or we can await if critical)
+try {
+    const { sendNewOrderAdminEmail } = await import("@/lib/tracking");
+    await sendNewOrderAdminEmail(order);
+} catch (e) {
+    console.error("Failed to trigger admin email:", e);
+}
+
+return { success: true, newAccount };
 }
