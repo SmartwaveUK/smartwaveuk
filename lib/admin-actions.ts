@@ -1,3 +1,5 @@
+"use server";
+
 import { createClient } from "@/lib/supabase/server";
 import { createShipment, sendTrackingUpdateEmail } from "@/lib/tracking";
 import { revalidatePath } from "next/cache";
