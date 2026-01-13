@@ -27,7 +27,7 @@ export function PaymentUploadForm({ orderId }: { orderId: string }) {
         return (
             <div className="bg-green-50 text-green-700 p-4 rounded-lg flex items-center gap-2 text-sm font-medium">
                 <div className="w-5 h-5 bg-green-200 rounded-full flex items-center justify-center">✓</div>
-                Receipt uploaded successfully! We will verify it shortly.
+                {t('receiptUploaded')}
             </div>
         );
     }

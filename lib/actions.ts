@@ -1,6 +1,6 @@
 "use server";
 
-import { createClient } from "@/lib/supabase/server";
+import { createClient, createAdminClient } from "@/lib/supabase/server";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
@@ -173,13 +173,14 @@ export async function handleCheckoutOrder(formData: FormData, cartItems: any[]) 
 
 export async function confirmPayment(orderId: string, formData: FormData) {
     const supabase = await createClient();
+    const adminClient = await createAdminClient();
     const file = formData.get("receipt") as File;
 
     if (!file || !orderId) {
         return { error: "Missing file or order ID" };
     }
 
-    // 1. Upload File
+    // 1. Upload File (User can upload if authenticated - verified by RLS)
     const fileExt = file.name.split('.').pop();
     const fileName = `${orderId}-${Math.random().toString(36).substring(7)}.${fileExt}`;
     const filePath = `${fileName}`;
@@ -193,11 +194,8 @@ export async function confirmPayment(orderId: string, formData: FormData) {
         return { error: "Failed to upload receipt" };
     }
 
-    // 2. Get Public URL (Signed URL if private? We set bucket to private. 
-    //    Actually, for email we need a signed URL or public URL. 
-    //    If bucket is private, we need createSignedUrl. 
-    //    Let's use createSignedUrl with a long expiry for the admin email link.)
-    const { data, error: signedUrlError } = await supabase.storage
+    // 2. Get Public URL (Use Admin Client to bypass RLS for reading/signing)
+    const { data, error: signedUrlError } = await adminClient.storage
         .from('payment-proofs')
         .createSignedUrl(filePath, 60 * 60 * 24 * 365); // 1 year access for admin
 

@@ -130,9 +130,6 @@ export default function CheckoutPage() {
                                 {t('orderProcessed')}
                             </p>
                         </div>
-                        <p className="text-xs text-muted-foreground mt-2">
-                            {t('orderProcessed')}
-                        </p>
                     </div>
                 </div>
 

@@ -53,7 +53,12 @@
         "addressLine1": "Address Line 1",
         "city": "City",
         "postcode": "Postcode",
-        "somethingWentWrong": "Something went wrong. Please try again."
+        "somethingWentWrong": "Something went wrong. Please try again.",
+        "uploadError": "Failed to upload receipt. Please try again.",
+        "upload": "Upload Receipt",
+        "receiptUploaded": "Receipt uploaded successfully! We will verify it shortly.",
+        "confirmPayment": "Confirm Payment",
+        "uploadReceiptDescription": "Please upload a screenshot or photo of your bank transfer confirmation. This speeds up the verification process."
     },
     "Account": {
         "title": "My Account",
@@ -66,6 +71,7 @@
         "order": "Order",
         "paymentRequired": "Payment Required",
         "makeTransfer": "Please make a bank transfer to complete your order:",
+        "confirmPayment": "Confirm Payment",
         "unknownDevice": "Unknown Device",
         "valuedCustomer": "Valued Customer",
         "status": {

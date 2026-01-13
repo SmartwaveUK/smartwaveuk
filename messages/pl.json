@@ -53,7 +53,12 @@
         "addressLine1": "Adres (linia 1)",
         "city": "Miasto",
         "postcode": "Kod pocztowy",
-        "somethingWentWrong": "Coś poszło nie tak. Spróbuj ponownie."
+        "somethingWentWrong": "Coś poszło nie tak. Spróbuj ponownie.",
+        "uploadError": "Nie udało się przesłać paragonu. Spróbuj ponownie.",
+        "upload": "Prześlij paragon",
+        "receiptUploaded": "Paragon przesłany pomyślnie! Wkrótce go zweryfikujemy.",
+        "confirmPayment": "Potwierdź płatność",
+        "uploadReceiptDescription": "Proszę przesłać zrzut ekranu lub zdjęcie potwierdzenia przelewu. Przyspieszy to proces weryfikacji."
     },
     "Account": {
         "title": "Moje Konto",
@@ -66,6 +71,7 @@
         "order": "Zamówienie",
         "paymentRequired": "Wymagana płatność",
         "makeTransfer": "Prosimy o wykonanie przelewu bankowego, aby sfinalizować zamówienie:",
+        "confirmPayment": "Potwierdź płatność",
         "unknownDevice": "Nieznane urządzenie",
         "valuedCustomer": "Szanowny Kliencie",
         "status": {
