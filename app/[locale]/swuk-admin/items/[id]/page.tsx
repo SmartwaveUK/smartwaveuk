@@ -130,18 +130,58 @@ export default function EditItemPage() {
     }
 
     async function handleDelete() {
-        if (!item || !confirm("Are you sure you want to delete this listing?")) return;
+        if (!item) return;
 
         setLoading(true);
         const supabase = createClient();
-        const { error } = await supabase.from("items").delete().eq("id", item.id);
 
-        if (error) {
-            alert("Error deleting item: " + error.message);
+        // 1. Check for dependent orders
+        const { count, error: countError } = await supabase
+            .from("order_items")
+            .select("*", { count: 'exact', head: true })
+            .eq("phone_id", item.id);
+
+        if (countError) {
+            alert("Error checking Item dependencies: " + countError.message);
             setLoading(false);
+            return;
+        }
+
+        const hasOrders = count !== null && count > 0;
+
+        if (hasOrders) {
+            if (confirm("This item has been ordered previously and cannot be permanently deleted because it is linked to sales data. \n\nWould you like to ARCHIVE it instead?")) {
+                // Perform Soft Delete (Archive)
+                const { error: updateError } = await supabase
+                    .from("items")
+                    .update({ availability_status: "archived" })
+                    .eq("id", item.id);
+
+                if (updateError) {
+                    alert("Error archiving item: " + updateError.message);
+                    setLoading(false);
+                } else {
+                    router.push("/swuk-admin/items");
+                    router.refresh();
+                }
+            } else {
+                setLoading(false);
+            }
         } else {
-            router.push("/swuk-admin/items");
-            router.refresh();
+            // No orders, safe to hard delete
+            if (confirm("Are you sure you want to permanently delete this listing?")) {
+                const { error } = await supabase.from("items").delete().eq("id", item.id);
+
+                if (error) {
+                    alert("Error deleting item: " + error.message);
+                    setLoading(false);
+                } else {
+                    router.push("/swuk-admin/items");
+                    router.refresh();
+                }
+            } else {
+                setLoading(false);
+            }
         }
     }
 

@@ -18,6 +18,7 @@ export default async function AdminItemsPage({
     let dbQuery = supabase
         .from("items")
         .select("*")
+        .neq("availability_status", "archived") // Exclude archived items
         .order("created_at", { ascending: false });
 
     if (query) {
