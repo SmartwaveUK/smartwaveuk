@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
+import { deleteItem } from "@/lib/admin-actions";
 
 interface Item {
     id: string;
@@ -129,36 +130,26 @@ export default function EditItemPage() {
         setLoading(false);
     }
 
+
     async function handleDelete() {
         if (!item) return;
 
         setLoading(true);
-        const supabase = createClient();
 
-        // 1. Check for dependent orders
-        const { count, error: countError } = await supabase
-            .from("order_items")
-            .select("*", { count: 'exact', head: true })
-            .eq("phone_id", item.id);
+        // Call Server Action
+        const result = await deleteItem(item.id);
 
-        if (countError) {
-            alert("Error checking Item dependencies: " + countError.message);
+        if (result.error) {
+            alert(result.error);
             setLoading(false);
             return;
         }
 
-        const hasOrders = count !== null && count > 0;
-
-        if (hasOrders) {
+        if (result.requires_archive_confirmation) {
             if (confirm("This item has been ordered previously and cannot be permanently deleted because it is linked to sales data. \n\nWould you like to ARCHIVE it instead?")) {
-                // Perform Soft Delete (Archive)
-                const { error: updateError } = await supabase
-                    .from("items")
-                    .update({ availability_status: "archived" })
-                    .eq("id", item.id);
-
-                if (updateError) {
-                    alert("Error archiving item: " + updateError.message);
+                const archiveResult = await deleteItem(item.id, true);
+                if (archiveResult.error) {
+                    alert(archiveResult.error);
                     setLoading(false);
                 } else {
                     router.push("/swuk-admin/items");
@@ -168,20 +159,9 @@ export default function EditItemPage() {
                 setLoading(false);
             }
         } else {
-            // No orders, safe to hard delete
-            if (confirm("Are you sure you want to permanently delete this listing?")) {
-                const { error } = await supabase.from("items").delete().eq("id", item.id);
-
-                if (error) {
-                    alert("Error deleting item: " + error.message);
-                    setLoading(false);
-                } else {
-                    router.push("/swuk-admin/items");
-                    router.refresh();
-                }
-            } else {
-                setLoading(false);
-            }
+            // Success (normal delete)
+            router.push("/swuk-admin/items");
+            router.refresh();
         }
     }
 
