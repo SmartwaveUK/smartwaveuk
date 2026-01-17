@@ -10,11 +10,11 @@ export function Categories() {
     const t = useTranslations("Categories");
 
     const categories = [
-        { key: "mobile", icon: Smartphone, image: "/phone-cat.png", link: "/shop?category=smartphone" },
-        { key: "headphones", icon: Headphones, image: "/headphone-cat.png", link: "/shop?category=headphones" },
-        { key: "tablets", icon: Tablet, image: "/tablet-cat.png", link: "/shop?category=tablet" },
-        { key: "laptops", icon: Monitor, image: "/laptop-cat.png", link: "/shop?category=laptop" },
-        { key: "speakers", icon: Speaker, image: "/speaker-cat.png", link: "/shop?category=speaker" },
+        { key: "mobile", icon: Smartphone, image: "/phone-cat.png", link: "/shop?category=Smartphone" },
+        { key: "headphones", icon: Headphones, image: "/headphone-cat.png", link: "/shop?category=Headphones" },
+        { key: "tablets", icon: Tablet, image: "/tablet-cat.png", link: "/shop?category=Tablet" },
+        { key: "laptops", icon: Monitor, image: "/laptop-cat.png", link: "/shop?category=Laptop" },
+        { key: "speakers", icon: Speaker, image: "/speaker-cat.png", link: "/shop?category=Speaker" },
         { key: "more", icon: Grid, link: "/shop" },
     ];
 
