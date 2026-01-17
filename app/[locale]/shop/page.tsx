@@ -34,6 +34,9 @@ export default async function ShopPage({
     const _conditions = params.condition;
     const conditions = Array.isArray(_conditions) ? _conditions : _conditions ? [_conditions] : [];
 
+    const _categories = params.category;
+    const categories = Array.isArray(_categories) ? _categories : _categories ? [_categories] : [];
+
     const availability = params.availability;
     const sort = (params.sort as string) || 'newest';
 
@@ -48,6 +51,9 @@ export default async function ShopPage({
 
         // Condition
         if (conditions.length > 0 && !conditions.includes(phone.condition)) return false;
+
+        // Category
+        if (categories.length > 0 && !categories.includes(phone.category)) return false;
 
         // Availability
         if (availability === 'in_stock' && phone.availability_status !== 'in_stock') return false;

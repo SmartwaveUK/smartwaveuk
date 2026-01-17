@@ -26,6 +26,9 @@ export function FilterSidebar() {
     const [selectedConditions, setSelectedConditions] = useState<string[]>(
         searchParams.getAll("condition")
     );
+    const [selectedCategories, setSelectedCategories] = useState<string[]>(
+        searchParams.getAll("category")
+    );
     const [inStockOnly, setInStockOnly] = useState(
         searchParams.get("availability") === "in_stock"
     );
@@ -33,6 +36,7 @@ export function FilterSidebar() {
     // Mock data - in real app could be passed as props
     const brands = ["Apple", "Samsung", "Google", "OnePlus", "Xiaomi"];
     const conditions = ["New", "Refurbished", "Used"];
+    const categories = ['Smartphone', 'Tablet', 'Smartwatch', 'Headphones', 'Accessories'];
 
     // Update state when URL changes (e.g. Back button)
     useEffect(() => {
@@ -42,6 +46,7 @@ export function FilterSidebar() {
         });
         setSelectedBrands(searchParams.getAll("brand"));
         setSelectedConditions(searchParams.getAll("condition"));
+        setSelectedCategories(searchParams.getAll("category"));
         setInStockOnly(searchParams.get("availability") === "in_stock");
     }, [searchParams]);
 
@@ -62,6 +67,10 @@ export function FilterSidebar() {
         // Update Condition
         params.delete("condition");
         selectedConditions.forEach(c => params.append("condition", c));
+
+        // Update Category
+        params.delete("category");
+        selectedCategories.forEach(c => params.append("category", c));
 
         // Update Availability
         if (inStockOnly) params.set("availability", "in_stock");
@@ -96,6 +105,19 @@ export function FilterSidebar() {
         const params = new URLSearchParams(searchParams.toString());
         params.delete("condition");
         newConditions.forEach(c => params.append("condition", c));
+        params.delete("page");
+        router.push(`/shop?${params.toString()}`);
+    };
+
+    const toggleCategory = (category: string) => {
+        const newCategories = selectedCategories.includes(category)
+            ? selectedCategories.filter(c => c !== category)
+            : [...selectedCategories, category];
+        setSelectedCategories(newCategories);
+
+        const params = new URLSearchParams(searchParams.toString());
+        params.delete("category");
+        newCategories.forEach(c => params.append("category", c));
         params.delete("page");
         router.push(`/shop?${params.toString()}`);
     };
@@ -152,6 +174,28 @@ export function FilterSidebar() {
                 <Button variant="outline" size="sm" className="w-full" onClick={handlePriceApply}>
                     {t('applyPrice')}
                 </Button>
+            </div>
+
+            {/* Categories */}
+            <div className="space-y-4">
+                <h4 className="font-medium text-sm">{t('categories')}</h4>
+                <div className="space-y-3">
+                    {categories.map((category) => (
+                        <div key={category} className="flex items-center space-x-2">
+                            <Checkbox
+                                id={`category-${category}`}
+                                checked={selectedCategories.includes(category)}
+                                onCheckedChange={() => toggleCategory(category)}
+                            />
+                            <Label
+                                htmlFor={`category-${category}`}
+                                className="text-sm font-normal cursor-pointer text-muted-foreground peer-data-[state=checked]:text-foreground peer-data-[state=checked]:font-medium"
+                            >
+                                {category}
+                            </Label>
+                        </div>
+                    ))}
+                </div>
             </div>
 
             {/* Brands */}

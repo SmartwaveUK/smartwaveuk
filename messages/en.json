@@ -165,7 +165,8 @@
             "new": "New",
             "refurbished": "Refurbished",
             "used": "Used"
-        }
+        },
+        "categories": "Categories"
     },
     "ProductPage": {
         "backToShop": "Back to shop",

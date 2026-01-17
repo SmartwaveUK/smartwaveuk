@@ -14,10 +14,11 @@ export function ActiveFilters() {
     const minPrice = searchParams.get("min_price");
     const maxPrice = searchParams.get("max_price");
     const brands = searchParams.getAll("brand");
+    const categories = searchParams.getAll("category");
     const conditions = searchParams.getAll("condition");
     const availability = searchParams.get("availability");
 
-    const hasFilters = minPrice || maxPrice || brands.length > 0 || conditions.length > 0 || availability;
+    const hasFilters = minPrice || maxPrice || brands.length > 0 || categories.length > 0 || conditions.length > 0 || availability;
 
     if (!hasFilters) return null;
 
@@ -63,6 +64,14 @@ export function ActiveFilters() {
                 <Badge key={`brand-${brand}`} variant="secondary" className="gap-1 pl-2 pr-1 h-7">
                     {brand}
                     <Button variant="ghost" size="icon" className="h-4 w-4 p-0 hover:bg-transparent" onClick={() => removeFilter("brand", brand)}>
+                        <X className="h-3 w-3" />
+                    </Button>
+                </Badge>
+            ))}
+            {categories.map(category => (
+                <Badge key={`category-${category}`} variant="secondary" className="gap-1 pl-2 pr-1 h-7">
+                    {category}
+                    <Button variant="ghost" size="icon" className="h-4 w-4 p-0 hover:bg-transparent" onClick={() => removeFilter("category", category)}>
                         <X className="h-3 w-3" />
                     </Button>
                 </Badge>

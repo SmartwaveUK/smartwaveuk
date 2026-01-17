@@ -10,12 +10,12 @@ export function Categories() {
     const t = useTranslations("Categories");
 
     const categories = [
-        { key: "mobile", icon: Smartphone, image: "/phone-cat.png" },
-        { key: "headphones", icon: Headphones, image: "/headphone-cat.png" },
-        { key: "tablets", icon: Tablet, image: "/tablet-cat.png" },
-        { key: "laptops", icon: Monitor, image: "/laptop-cat.png" },
-        { key: "speakers", icon: Speaker, image: "/speaker-cat.png" },
-        { key: "more", icon: Grid },
+        { key: "mobile", icon: Smartphone, image: "/phone-cat.png", link: "/shop?category=smartphone" },
+        { key: "headphones", icon: Headphones, image: "/headphone-cat.png", link: "/shop?category=headphones" },
+        { key: "tablets", icon: Tablet, image: "/tablet-cat.png", link: "/shop?category=tablet" },
+        { key: "laptops", icon: Monitor, image: "/laptop-cat.png", link: "/shop?category=laptop" },
+        { key: "speakers", icon: Speaker, image: "/speaker-cat.png", link: "/shop?category=speaker" },
+        { key: "more", icon: Grid, link: "/shop" },
     ];
 
     return (
@@ -25,7 +25,7 @@ export function Categories() {
                     key={cat.key}
                     className="flex flex-col items-center gap-2 group bg-slate-50 rounded-md p-2 transition-all group-hover:bg-white group-hover:border-primary/20 group-hover:shadow-lg group-hover:scale-105"
                 >
-                    <Link href={`/shop`}>
+                    <Link href={cat.link}>
                         <div className="w-16 h-16 flex items-center justify-center text-slate-600  overflow-hidden relative">
                             {cat.image ? (
                                 <div className="w-24 h-24 relative">
